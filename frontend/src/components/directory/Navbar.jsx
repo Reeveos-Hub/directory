@@ -29,7 +29,10 @@ export default function Navbar() {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: '#1B4332' }}>
                 <span className="font-heading font-extrabold text-xl text-white">R</span>
               </div>
-              <span className="text-forest font-heading font-extrabold text-[22px] tracking-tight">REEVE NOW</span>
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#FFB627] mr-2 flex-shrink-0">
+                <svg viewBox="0 0 32 32" className="w-6 h-6"><text x="10" y="22" fontFamily="Figtree, system-ui, sans-serif" fontWeight="800" fontSize="18" fill="#fff" textAnchor="middle">R</text><circle cx="22" cy="19" r="2.5" fill="#fff"/></svg>
+              </span>
+              <span className="text-forest font-heading font-extrabold text-[22px] tracking-tight">Reeve Now</span>
             </Link>
 
             {/* Desktop Nav */}

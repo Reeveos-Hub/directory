@@ -42,7 +42,10 @@ export default function ReeveNowFooter() {
                 <div className="w-10 h-10 rounded-xl bg-mint flex items-center justify-center">
                   <span className="font-heading font-extrabold text-xl" style={{ color: '#D4A017' }}>R</span>
                 </div>
-                <span className="text-white font-heading font-extrabold text-2xl tracking-tight">REEVE NOW</span>
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#FFB627] mr-2 flex-shrink-0">
+                  <svg viewBox="0 0 32 32" className="w-6 h-6"><text x="10" y="22" fontFamily="Figtree, system-ui, sans-serif" fontWeight="800" fontSize="18" fill="#fff" textAnchor="middle">R</text><circle cx="22" cy="19" r="2.5" fill="#fff"/></svg>
+                </span>
+                <span className="text-white font-heading font-extrabold text-2xl tracking-tight">Reeve Now</span>
               </div>
               <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-sm font-body">
                 The zero-commission booking &amp; ordering platform helping UK restaurants and service businesses thrive.

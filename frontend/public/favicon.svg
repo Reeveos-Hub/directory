@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#1B4332"/>
-  <text x="50" y="70" font-size="60" font-family="system-ui" font-weight="bold" fill="#FAFAF7" text-anchor="middle">R</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#FFB627"/>
+  <text x="12" y="20" font-family="Figtree, system-ui, sans-serif" font-weight="800" font-size="17" fill="#FFFFFF" text-anchor="middle" dominant-baseline="auto">R</text>
+  <circle cx="22" cy="18" r="2" fill="#FFFFFF"/>
 </svg>
