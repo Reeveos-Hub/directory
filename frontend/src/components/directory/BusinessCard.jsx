@@ -68,7 +68,7 @@ const BusinessCard = ({ business, onSlotClick }) => {
         <Link to={`/${b.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <div style={{ fontSize: 16, fontWeight: 700, color: '#111', marginBottom: 2 }}>{b.name}</div>
           <div style={{ fontSize: 12, color: '#9CA3AF', marginBottom: 10 }}>
-            {b.category?.charAt(0).toUpperCase() + b.category?.slice(1)} · {b.address}
+            {b.category?.charAt(0).toUpperCase() + b.category?.slice(1)} · {typeof b.address === 'object' ? (b.address?.street || b.address?.city || '') : (b.address || '')}
             {b.distance_km !== undefined && <span> · {b.distance_km}km</span>}
           </div>
         </Link>

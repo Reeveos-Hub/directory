@@ -83,7 +83,7 @@ export default function Navbar({ showBack = false }) {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} className="hide-on-mobile">
             <a href="https://portal.rezvo.app/login" style={{ padding: '8px 20px', borderRadius: 99, fontSize: 13, fontWeight: 600, color: $.h, textDecoration: 'none' }}>Log in</a>
-            <a href="https://portal.rezvo.app/register" className="pill pill-sm" style={{ fontSize: 13 }}>List your business</a>
+            <a href="/list-your-business" className="pill pill-sm" style={{ fontSize: 13 }}>List your business</a>
           </div>
 
           <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="show-mobile-only"
@@ -105,7 +105,7 @@ export default function Navbar({ showBack = false }) {
                 style={{ display: 'block', padding: '12px 16px', borderRadius: 12, fontSize: 15, fontWeight: 600, color: $.h, textDecoration: 'none' }}>{link.label}</Link>
             ))}
             <div style={{ height: 1, background: $.bdr, margin: '12px 0' }} />
-            <a href="https://portal.rezvo.app/register" className="pill pill-gold" style={{ display: 'block', textAlign: 'center', width: '100%' }}>List your business</a>
+            <a href="/list-your-business" className="pill pill-gold" style={{ display: 'block', textAlign: 'center', width: '100%' }}>List your business</a>
           </div>
         </div>
       )}

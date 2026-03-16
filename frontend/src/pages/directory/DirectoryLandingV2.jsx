@@ -221,11 +221,15 @@ const DirectoryLanding = () => {
             <h2 style={{ fontSize: 22, fontWeight: 800, color: $.h, margin: 0 }}>Browse by city</h2>
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {data.locations.map(loc => (
-              <button key={loc._id} className="pill-filter" onClick={() => navigate(`/search?city=${loc._id}`)}>
-                {loc._id} ({loc.count})
-              </button>
-            ))}
+            {data.locations.map((loc, i) => {
+              const cityName = typeof loc._id === 'object' ? (loc._id?.city || loc._id?.name || JSON.stringify(loc._id)) : loc._id
+              if (!cityName || cityName === 'null' || cityName === 'undefined') return null
+              return (
+                <button key={i} className="pill-filter" onClick={() => navigate(`/search?city=${cityName}`)}>
+                  {cityName} ({loc.count})
+                </button>
+              )
+            })}
           </div>
         </div>
       )}

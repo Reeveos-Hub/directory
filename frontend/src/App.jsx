@@ -28,6 +28,7 @@ import RestaurantProfilePage from './pages/directory/RestaurantProfilePage'
 import CategoryCityPage from './pages/directory/CategoryCityPage'
 import LiveFeed from './pages/directory/LiveFeed'
 import FaqsPage from './pages/directory/FaqsPage'
+import ListBusinessPage from './pages/directory/ListBusinessPage'
 
 /* Legacy pages (kept for backwards compat) */
 import ListingPage from './pages/directory/ListingPage'
@@ -62,6 +63,9 @@ const App = () => {
           {/* THE KILLER FEATURE — cancellation marketplace */}
           <Route path="/live" element={<LiveFeed />} />
 
+          {/* List your business — free listing registration */}
+          <Route path="/list-your-business" element={<ListBusinessPage />} />
+
           {/* Smart profile routing — auto-detects restaurant vs service */}
           <Route path="/:slug" element={<SmartProfile />} />
 
@@ -75,7 +79,7 @@ const App = () => {
 
           {/* Auth — redirect to reeveos.app */}
           <Route path="/login" element={<ExternalRedirect to="https://portal.rezvo.app/login" />} />
-          <Route path="/signup" element={<ExternalRedirect to="https://portal.rezvo.app/register" />} />
+          <Route path="/signup" element={<ExternalRedirect to="/list-your-business" />} />
           <Route path="/faqs" element={<FaqsPage />} />
 
           {/* Static page redirects */}

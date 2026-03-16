@@ -87,7 +87,7 @@ export default function ReeveNowFooter() {
               <ExtLink href="https://reeveos.app/for-business">How It Works</ExtLink>
               <ExtLink href="https://reeveos.app/for-business#pricing">Pricing</ExtLink>
               <ExtLink href="https://reeveos.app/features/team-up.html">Team Up &amp; Save</ExtLink>
-              <ExtLink href="https://portal.rezvo.app/register">Get Started</ExtLink>
+              <ExtLink href="/list-your-business">Get Started</ExtLink>
               <ExtLink href="https://portal.rezvo.app/login">Partner Login</ExtLink>
             </FooterCol>
 

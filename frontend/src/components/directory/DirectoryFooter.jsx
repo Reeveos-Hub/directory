@@ -55,7 +55,7 @@ const DirectoryFooter = () => (
         {/* For Business */}
         <div>
           <h4 style={{ fontSize: 13, fontWeight: 700, color: $.acc, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>For Business</h4>
-          <ExtLink href="https://portal.rezvo.app/register">List Your Business</ExtLink>
+          <ExtLink href="/list-your-business">List Your Business</ExtLink>
           <ExtLink href="https://reeveos.app/industries/">Industries</ExtLink>
           <ExtLink href="https://reeveos.app#pricing">Pricing</ExtLink>
           <ExtLink href="https://portal.rezvo.app/login">Partner Login</ExtLink>

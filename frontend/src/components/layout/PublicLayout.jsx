@@ -26,7 +26,7 @@ const PublicLayout = () => {
               ) : (
                 <>
                   <a href="https://portal.rezvo.app/login" className="text-forest hover:text-forest-90 font-medium">Log in</a>
-                  <a href="https://portal.rezvo.app/register" className="btn-primary">Sign up</a>
+                  <a href="/list-your-business" className="btn-primary">Sign up</a>
                 </>
               )}
             </div>
