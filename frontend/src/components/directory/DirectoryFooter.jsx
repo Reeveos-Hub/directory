@@ -55,7 +55,7 @@ const DirectoryFooter = () => (
         {/* For Business */}
         <div>
           <h4 style={{ fontSize: 13, fontWeight: 700, color: $.acc, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>For Business</h4>
-          <ExtLink href="/list-your-business">List Your Business</ExtLink>
+          <FooterLink to="/list-your-business">List Your Business</FooterLink>
           <ExtLink href="https://reeveos.app/industries/">Industries</ExtLink>
           <ExtLink href="https://reeveos.app#pricing">Pricing</ExtLink>
           <ExtLink href="https://portal.rezvo.app/login">Partner Login</ExtLink>
@@ -83,11 +83,11 @@ const DirectoryFooter = () => (
         <div style={{ display: 'flex', gap: 16 }}>
           {/* Social icons - monochrome SVGs */}
           {[
-            { label: 'Instagram', path: 'M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-2.5a1 1 0 110 2 1 1 0 010-2z' },
-            { label: 'X', path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
-            { label: 'LinkedIn', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z' },
+            { label: 'Instagram', path: 'M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5A4.25 4.25 0 0020.5 16.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-2.5a1 1 0 110 2 1 1 0 010-2z', href: 'https://instagram.com/reeveos' },
+            { label: 'X', path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z', href: 'https://x.com/reeveos' },
+            { label: 'LinkedIn', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z', href: 'https://linkedin.com/company/reeveos' },
           ].map(s => (
-            <a key={s.label} href="#" style={{ width: 32, height: 32, borderRadius: 99, border: '1px solid #333', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 99, border: '1px solid #333', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = $.acc; e.currentTarget.querySelector('svg').style.fill = $.acc }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.querySelector('svg').style.fill = '#6B7280' }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#6B7280" style={{ transition: 'fill 0.2s' }}><path d={s.path}/></svg>
