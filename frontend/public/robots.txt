@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://rezvo.co.uk/sitemap.xml
+Sitemap: https://reevenow.com/sitemap.xml

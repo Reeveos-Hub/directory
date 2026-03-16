@@ -77,6 +77,8 @@ const DirectoryFooter = () => (
       <div style={{ borderTop: '1px solid #222', paddingTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
         <p style={{ fontSize: 12, color: '#4B5563' }}>
           &copy; {new Date().getFullYear()} Reeve Ltd. All rights reserved. Powered by <a href="https://reeveos.app" style={{ color: $.acc, textDecoration: 'none' }}>ReeveOS</a>
+          {' '}&middot;{' '}
+          <a href="/sitemap.xml" style={{ color: '#4B5563', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => e.target.style.color = $.acc} onMouseLeave={e => e.target.style.color = '#4B5563'}>Sitemap</a>
         </p>
         <div style={{ display: 'flex', gap: 16 }}>
           {/* Social icons - monochrome SVGs */}
