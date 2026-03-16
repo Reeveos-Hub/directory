@@ -147,11 +147,11 @@ const ServiceProfilePage = () => {
       </div>
 
       {/* Main content + Sidebar layout */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 48px', display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+      <div className="profile-layout section-padded" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 48px', display: 'flex', gap: 32, alignItems: 'flex-start' }}>
         {/* Left: main content */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="profile-main" style={{ flex: 1, minWidth: 0 }}>
           {/* Tabs (Gap #46) */}
-          <div style={{ display: 'flex', gap: 0, borderBottom: `2px solid ${$.bdr}`, marginBottom: 24 }}>
+          <div className="tab-nav-scroll" style={{ display: 'flex', gap: 0, borderBottom: `2px solid ${$.bdr}`, marginBottom: 24 }}>
             {tabs.map(t => (
               <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
                 padding: '12px 20px', fontSize: 14, fontWeight: 600,
@@ -322,7 +322,7 @@ const ServiceProfilePage = () => {
         </div>
 
         {/* Right: Sticky sidebar (Gap #15, #60) — desktop only */}
-        <div style={{ width: 320, flexShrink: 0, position: 'sticky', top: 24 }} className="hidden-mobile">
+        <div className="profile-sidebar hidden-mobile" style={{ width: 320, flexShrink: 0, position: 'sticky', top: 24 }}>
           <div style={{ background: $.card, border: `1px solid ${$.bdr}`, borderRadius: 16, padding: 20 }}>
             <button className="pill pill-gold pill-full pill-lg" onClick={() => navigate(`/book/${slug}`)}>
               Book now
@@ -387,7 +387,7 @@ const ServiceProfilePage = () => {
       </div>
 
       {/* Mobile sticky footer (Gap #61) */}
-      <div className="show-mobile" style={{
+      <div className="mobile-book-footer" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         background: '#fff', borderTop: `1px solid ${$.bdr}`,
         padding: '12px 16px', display: 'none',

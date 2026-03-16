@@ -91,7 +91,7 @@ const SearchPageV2 = () => {
 
       {/* Top search bar */}
       <div style={{ borderBottom: `1px solid ${$.bdr}`, padding: '12px 24px', background: '#fff' }}>
-        <form onSubmit={e => { e.preventDefault(); doSearch() }} style={{
+        <form onSubmit={e => { e.preventDefault(); doSearch() }} className="hero-search-form" style={{
           display: 'flex', gap: 8, maxWidth: 1200, margin: '0 auto', alignItems: 'center', flexWrap: 'wrap',
         }}>
           <div style={{ position: 'relative', flex: 2, minWidth: 140 }}>
@@ -119,7 +119,7 @@ const SearchPageV2 = () => {
       {/* Filter bar */}
       <div style={{ borderBottom: `1px solid ${$.bdr}`, padding: '10px 24px', background: '#fff' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="filter-pills-scroll" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
             {CATEGORIES.map(cat => (
               <button key={cat.id} className={category === cat.id ? 'pill-filter active' : 'pill-filter'}
                 onClick={() => setCategory(cat.id)}>{cat.label}</button>
@@ -157,7 +157,7 @@ const SearchPageV2 = () => {
               <p style={{ fontSize: 14, color: $.m }}>Try adjusting your filters or search in a different area</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: showMap ? '1fr 1fr' : 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
+            <div className="search-results-grid" style={{ display: 'grid', gridTemplateColumns: showMap ? '1fr 1fr' : 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
               {results.map(biz => (
                 <BusinessCard key={biz.id || biz.slug} business={biz} onSlotClick={handleSlotClick} />
               ))}

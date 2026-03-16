@@ -79,7 +79,7 @@ const DirectoryLanding = () => {
           </p>
 
           {/* Search bar (Gap #26 — 3-field: treatment + location + date) */}
-          <form onSubmit={handleSearch} style={{
+          <form onSubmit={handleSearch} className="hero-search-form" style={{
             display: 'flex', background: '#fff', borderRadius: 99, padding: 6,
             maxWidth: 700, margin: '0 auto', gap: 0, flexWrap: 'wrap',
             boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
@@ -96,7 +96,7 @@ const DirectoryLanding = () => {
                 }}
               />
             </div>
-            <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
+            <div className="search-divider" style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
             <div style={{ flex: 1.5, minWidth: 120, position: 'relative' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
@@ -109,7 +109,7 @@ const DirectoryLanding = () => {
                 }}
               />
             </div>
-            <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
+            <div className="search-divider" style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
             <div style={{ flex: 1, minWidth: 120, position: 'relative' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -136,7 +136,7 @@ const DirectoryLanding = () => {
 
       {/* ═══ CATEGORY CIRCLES (Gap #27) ═══ */}
       <div style={{ maxWidth: 1000, margin: '48px auto', padding: '0 24px' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
+        <div className="category-grid" style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
           {CATEGORIES.map(cat => (
             <button key={cat.id} onClick={() => handleCategoryClick(cat.id)} style={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,

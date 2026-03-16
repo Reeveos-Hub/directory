@@ -18,7 +18,7 @@ const SocialProof = ({ style = {} }) => {
   if (!stats) return null
 
   return (
-    <div style={{
+    <div className="social-proof-bar" style={{
       display: 'flex', justifyContent: 'center', gap: 48,
       padding: '28px 24px', background: '#111', borderRadius: 16,
       ...style,

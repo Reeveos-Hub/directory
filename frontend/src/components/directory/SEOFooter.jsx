@@ -69,7 +69,7 @@ const SEOFooter = ({ currentCity, currentCategory }) => {
           </button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 8 }}>
+        <div className="seo-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 8 }}>
           {Object.entries(TREATMENTS).map(([group, items]) => (
             items.map(treatment => (
               <Link key={treatment} to={`/search?q=${encodeURIComponent(treatment)}`}
@@ -88,7 +88,7 @@ const SEOFooter = ({ currentCity, currentCategory }) => {
         <h3 style={{ fontSize: 18, fontWeight: 700, color: $.h, marginBottom: 16 }}>
           Browse locations {currentCity ? `near ${currentCity}` : 'across the UK'}
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 6 }}>
+        <div className="seo-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 6 }}>
           {CATEGORIES.map(cat => (
             CITIES.slice(0, 10).map(city => (
               <Link key={`${cat.slug}-${city}`}

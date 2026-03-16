@@ -163,7 +163,7 @@ const RestaurantProfilePage = () => {
       </div>
 
       {/* Main content + Sidebar */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 48px', display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+      <div className="profile-layout section-padded" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 48px', display: 'flex', gap: 32, alignItems: 'flex-start' }}>
         {/* Left: main content */}
         <div style={{ flex: 1, minWidth: 0 }}>
           {/* Tabs */}
@@ -315,7 +315,7 @@ const RestaurantProfilePage = () => {
         </div>
 
         {/* Right: Reservation widget sidebar (Gap #15, #31, #66) */}
-        <div style={{ width: 340, flexShrink: 0, position: 'sticky', top: 24 }} className="hidden-mobile">
+        <div className="profile-sidebar hidden-mobile" style={{ width: 340, flexShrink: 0, position: 'sticky', top: 24 }}>
           <div style={{ background: $.card, border: `1px solid ${$.bdr}`, borderRadius: 16, padding: 20 }}>
             <h3 style={{ fontSize: 18, fontWeight: 700, color: $.h, marginBottom: 16, textAlign: 'center' }}>Make a reservation</h3>
 
@@ -382,7 +382,7 @@ const RestaurantProfilePage = () => {
       </div>
 
       {/* Mobile sticky footer */}
-      <div className="show-mobile" style={{
+      <div className="mobile-book-footer" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         background: '#fff', borderTop: `1px solid ${$.bdr}`, padding: '12px 16px', display: 'none',
       }}>
