@@ -23,13 +23,13 @@ const $ = {
 }
 
 const CATEGORIES = [
-  { id: 'restaurant', label: 'Restaurants', icon: 'M8.1 13.34l2.83-2.83L3.91 3.5a4 4 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z' },
-  { id: 'salon', label: 'Hair Salons', icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
-  { id: 'barber', label: 'Barbers', icon: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3h-3z' },
-  { id: 'aesthetics', label: 'Aesthetics', icon: 'M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z' },
-  { id: 'nails', label: 'Nails', icon: 'M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14z' },
-  { id: 'spa', label: 'Spas', icon: 'M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63zm-6.5 2.65c-.14-.1-.3-.19-.45-.29C6.68 10.14 4.26 9.5 1.5 9.5c0 7.18 5.82 13 13 13 7.18 0 13-5.82 13-13-2.76 0-5.18.64-7.04 1.49-.15.1-.31.19-.45.29-1.55 1.17-2.86 2.71-3.52 4.57C15.85 14.99 14.56 13.45 13 12.28z' },
-  { id: 'cafe', label: 'Cafés', icon: 'M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z' },
+  { id: 'restaurant', label: 'Restaurants', icon: 'M8.1 13.34l2.83-2.83L3.91 3.5a4 4 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z', photo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=200&fit=crop' },
+  { id: 'salon', label: 'Hair Salons', icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z', photo: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=200&h=200&fit=crop' },
+  { id: 'barber', label: 'Barbers', icon: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3h-3z', photo: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=200&h=200&fit=crop' },
+  { id: 'aesthetics', label: 'Aesthetics', icon: 'M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z', photo: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=200&h=200&fit=crop' },
+  { id: 'nails', label: 'Nails', icon: 'M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14z', photo: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=200&h=200&fit=crop' },
+  { id: 'spa', label: 'Spas', icon: 'M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63zm-6.5 2.65c-.14-.1-.3-.19-.45-.29C6.68 10.14 4.26 9.5 1.5 9.5c0 7.18 5.82 13 13 13 7.18 0 13-5.82 13-13-2.76 0-5.18.64-7.04 1.49-.15.1-.31.19-.45.29-1.55 1.17-2.86 2.71-3.52 4.57C15.85 14.99 14.56 13.45 13 12.28z', photo: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=200&h=200&fit=crop' },
+  { id: 'cafe', label: 'Cafés', icon: 'M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z', photo: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=200&h=200&fit=crop' },
 ]
 
 const DirectoryLanding = () => {
@@ -142,15 +142,17 @@ const DirectoryLanding = () => {
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
               background: 'none', border: 'none', cursor: 'pointer', transition: 'all 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.querySelector('.cat-circle').style.borderColor = $.acc}
-            onMouseLeave={e => e.currentTarget.querySelector('.cat-circle').style.borderColor = '#E5E7EB'}
+            onMouseEnter={e => { e.currentTarget.querySelector('.cat-circle').style.transform = 'scale(1.08)'; e.currentTarget.querySelector('.cat-circle').style.boxShadow = '0 8px 24px rgba(201,168,76,0.3)' }}
+            onMouseLeave={e => { e.currentTarget.querySelector('.cat-circle').style.transform = 'scale(1)'; e.currentTarget.querySelector('.cat-circle').style.boxShadow = 'none' }}
             >
               <div className="cat-circle" style={{
-                width: 72, height: 72, borderRadius: 99, background: '#F5F5F3',
-                border: '2px solid #E5E7EB', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', transition: 'all 0.3s',
+                width: 80, height: 80, borderRadius: 99, position: 'relative',
+                overflow: 'hidden', transition: 'all 0.3s',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill={$.h}><path d={cat.icon}/></svg>
+                <img src={cat.photo} alt={cat.label} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(17,17,17,0.4)' }} />
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" style={{ position: 'relative', zIndex: 1 }}><path d={cat.icon}/></svg>
               </div>
               <span style={{ fontSize: 13, fontWeight: 600, color: $.h }}>{cat.label}</span>
             </button>
