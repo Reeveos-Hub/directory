@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { getPlatformStats } from '../../utils/directoryApi'
 
 const StatItem = ({ value, label }) => (
-  <div style={{ textAlign: 'center' }}>
-    <div style={{ fontSize: 28, fontWeight: 800, color: '#C9A84C', letterSpacing: -0.5 }}>
+  <div style={{ textAlign: 'center', minWidth: 0 }}>
+    <div className="social-proof-value" style={{ fontSize: 28, fontWeight: 800, color: '#C9A84C', letterSpacing: -0.5 }}>
       {typeof value === 'number' ? value.toLocaleString() : value}
     </div>
     <div style={{ fontSize: 12, color: '#6B7280', fontWeight: 500 }}>{label}</div>
@@ -19,9 +19,9 @@ const SocialProof = ({ style = {} }) => {
 
   return (
     <div className="social-proof-bar" style={{
-      display: 'flex', justifyContent: 'center', gap: 48,
-      padding: '28px 24px', background: '#111', borderRadius: 16,
-      ...style,
+      display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+      padding: '20px 16px', background: '#111', borderRadius: 16,
+      gap: 8, ...style,
     }}>
       <StatItem value={stats.total_bookings} label="Bookings made" />
       <StatItem value={stats.total_businesses} label="Businesses" />

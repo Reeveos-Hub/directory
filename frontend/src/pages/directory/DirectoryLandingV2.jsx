@@ -81,8 +81,8 @@ const DirectoryLanding = () => {
           {/* Search bar (Gap #26 — 3-field: treatment + location + date) */}
           <form onSubmit={handleSearch} className="hero-search-form" style={{
             display: 'flex', background: '#fff', borderRadius: 99, padding: 6,
-            maxWidth: 700, margin: '0 auto', gap: 0, flexWrap: 'wrap',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+            maxWidth: 700, width: '100%', margin: '0 auto', gap: 0, flexWrap: 'wrap',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.15)', boxSizing: 'border-box',
           }}>
             <div style={{ flex: 2, minWidth: 140, position: 'relative' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)' }}>
