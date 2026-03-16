@@ -13,6 +13,7 @@ import BusinessCard from '../../components/directory/BusinessCard'
 import SocialProof from '../../components/directory/SocialProof'
 import TrendingDishes from '../../components/directory/TrendingDishes'
 import ListYourBusiness from '../../components/directory/ListYourBusiness'
+import DirectoryFooter from '../../components/directory/DirectoryFooter'
 
 const $ = {
   h: '#111111', m: '#6B7280', l: '#9CA3AF', acc: '#C9A84C',
@@ -227,9 +228,12 @@ const DirectoryLanding = () => {
       )}
 
       {/* ═══ LIST YOUR BUSINESS CTA (Gap #52) ═══ */}
-      <div style={{ maxWidth: 800, margin: '0 auto 64px', padding: '0 24px' }}>
+      <div style={{ maxWidth: 800, margin: '0 auto 0', padding: '0 24px 48px' }}>
         <ListYourBusiness />
       </div>
+
+      {/* ═══ FOOTER ═══ */}
+      <DirectoryFooter />
 
       <style>{`@keyframes urgentPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.3); } 50% { box-shadow: 0 0 12px 4px rgba(34,197,94,0.2); } }`}</style>
     </div>

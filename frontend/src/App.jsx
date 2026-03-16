@@ -46,35 +46,7 @@ import BookingFlow from './pages/booking/BookingFlow'
 import BookingConfirmation from './pages/booking/BookingConfirmation'
 import BookingManage from './pages/booking/BookingManage'
 
-/**
- * SmartProfile — routes to ServiceProfilePage or RestaurantProfilePage
- * based on business type. Falls back to service profile if type unknown.
- */
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { getListing } from './utils/directoryApi'
-
-const SmartProfile = () => {
-  const { slug } = useParams()
-  const [bizType, setBizType] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    getListing(slug)
-      .then(data => setBizType(data.type || (data.category === 'restaurant' || data.category === 'cafe' ? 'restaurant' : 'services')))
-      .catch(() => setBizType('services'))
-      .finally(() => setLoading(false))
-  }, [slug])
-
-  if (loading) return (
-    <div style={{ display: 'flex', justifyContent: 'center', padding: 80 }}>
-      <div style={{ width: 32, height: 32, border: '3px solid #E5E7EB', borderTop: '3px solid #C9A84C', borderRadius: 99, animation: 'spin 0.8s linear infinite' }} />
-      <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
-    </div>
-  )
-
-  return bizType === 'restaurant' ? <RestaurantProfilePage /> : <ServiceProfilePage />
-}
+import SmartProfile from './pages/directory/SmartProfile'
 
 const App = () => {
   return (
