@@ -71,6 +71,18 @@ const BusinessPortal = () => {
               <p style={{ fontSize: 13, color: $.l, margin: 0 }}>Free listing on Reeve Now</p>
             </div>
             <span style={{ padding: '4px 12px', borderRadius: 99, background: 'rgba(201,168,76,0.15)', color: $.acc, fontSize: 12, fontWeight: 600 }}>Free plan</span>
+            <button onClick={() => navigate('/')} style={{
+              padding: '8px 16px', borderRadius: 99, background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: 13,
+              fontWeight: 600, cursor: 'pointer', fontFamily: $.f, transition: 'all 0.2s',
+              display: 'flex', alignItems: 'center', gap: 6,
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = $.acc; e.currentTarget.style.color = $.acc }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = '#fff' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Log out
+            </button>
           </div>
           {/* Tabs */}
           <div className="filter-pills-scroll" style={{ display: 'flex', gap: 4, overflowX: 'auto' }}>

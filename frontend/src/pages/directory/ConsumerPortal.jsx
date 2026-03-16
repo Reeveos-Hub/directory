@@ -92,10 +92,22 @@ const ConsumerPortal = () => {
             <div style={{ width: 56, height: 56, borderRadius: 99, background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={$.acc} strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
-            <div>
+            <div style={{ flex: 1 }}>
               <h1 style={{ fontSize: 'clamp(20px, 3vw, 28px)', fontWeight: 800, color: '#fff', margin: 0 }}>My Account</h1>
               <p style={{ fontSize: 13, color: $.l, margin: 0 }}>Manage your bookings and favourites</p>
             </div>
+            <button onClick={() => navigate('/')} style={{
+              padding: '8px 16px', borderRadius: 99, background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: 13,
+              fontWeight: 600, cursor: 'pointer', fontFamily: $.f, transition: 'all 0.2s',
+              display: 'flex', alignItems: 'center', gap: 6,
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = $.acc; e.currentTarget.style.color = $.acc }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = '#fff' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Log out
+            </button>
           </div>
           {/* Tabs */}
           <div className="filter-pills-scroll" style={{ display: 'flex', gap: 4, overflowX: 'auto' }}>

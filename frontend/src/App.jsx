@@ -7,6 +7,7 @@
  */
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { lazy, Suspense } from 'react'
 import ScrollToTop from './components/ScrollToTop'
 import ChatWidget from './components/ChatWidget'
 import BottomNav from './components/directory/BottomNav'
@@ -14,23 +15,34 @@ import CookieConsent from './components/directory/CookieConsent'
 
 import PublicLayout from './components/layout/PublicLayout'
 
+/* Loading fallback */
+const PageLoader = () => (
+  <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: 32, height: 32, border: '3px solid #E5E7EB', borderTopColor: '#C9A84C', borderRadius: '50%', animation: 'spin 0.6s linear infinite' }} />
+    <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+  </div>
+)
+
 /* External redirect helper — sends to reeveos.app for auth */
 const ExternalRedirect = ({ to }) => {
   window.location.href = to
   return null
 }
 
-/* ═══ DIRECTORY PAGES (v2 — all wired to portal.rezvo.app/api) ═══ */
+/* ═══ DIRECTORY PAGES ═══ */
 import DirectoryLandingV2 from './pages/directory/DirectoryLandingV2'
 import SearchPageV2 from './pages/directory/SearchPageV2'
-import ServiceProfilePage from './pages/directory/ServiceProfilePage'
-import RestaurantProfilePage from './pages/directory/RestaurantProfilePage'
-import CategoryCityPage from './pages/directory/CategoryCityPage'
-import LiveFeed from './pages/directory/LiveFeed'
-import FaqsPage from './pages/directory/FaqsPage'
-import ListBusinessPage from './pages/directory/ListBusinessPage'
-import BusinessPortal from './pages/directory/BusinessPortal'
-import ConsumerPortal from './pages/directory/ConsumerPortal'
+import SmartProfile from './pages/directory/SmartProfile'
+
+/* Lazy-loaded pages (don't block initial render) */
+const ServiceProfilePage = lazy(() => import('./pages/directory/ServiceProfilePage'))
+const RestaurantProfilePage = lazy(() => import('./pages/directory/RestaurantProfilePage'))
+const CategoryCityPage = lazy(() => import('./pages/directory/CategoryCityPage'))
+const LiveFeed = lazy(() => import('./pages/directory/LiveFeed'))
+const FaqsPage = lazy(() => import('./pages/directory/FaqsPage'))
+const ListBusinessPage = lazy(() => import('./pages/directory/ListBusinessPage'))
+const BusinessPortal = lazy(() => import('./pages/directory/BusinessPortal'))
+const ConsumerPortal = lazy(() => import('./pages/directory/ConsumerPortal'))
 
 /* Legacy pages (kept for backwards compat) */
 import ListingPage from './pages/directory/ListingPage'
@@ -49,14 +61,13 @@ import BookingFlow from './pages/booking/BookingFlow'
 import BookingConfirmation from './pages/booking/BookingConfirmation'
 import BookingManage from './pages/booking/BookingManage'
 
-import SmartProfile from './pages/directory/SmartProfile'
-
 const App = () => {
   return (
     <>
     <Router>
       <ScrollToTop />
       <AuthProvider>
+        <Suspense fallback={<PageLoader />}>
         <Routes>
           {/* ═══ CORE DIRECTORY (v2 — wired to real API) ═══ */}
           <Route path="/" element={<DirectoryLandingV2 />} />
@@ -116,6 +127,7 @@ const App = () => {
           {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
         {/* Mobile bottom nav — appears on all pages (Gap #87) */}
         <BottomNav />
       </AuthProvider>
