@@ -19,6 +19,9 @@ import AmenitiesDisplay from '../../components/directory/AmenitiesDisplay'
 import TeamGrid from '../../components/directory/TeamGrid'
 import NearbySection from '../../components/directory/NearbySection'
 import ShareFavourite from '../../components/directory/ShareFavourite'
+import Navbar from '../../components/directory/Navbar'
+import DirectoryFooter from '../../components/directory/DirectoryFooter'
+import SEOFooter from '../../components/directory/SEOFooter'
 
 const $ = {
   bg: '#FFFFFF', card: '#FFFFFF', surface: '#F5F5F3',
@@ -103,6 +106,7 @@ const ServiceProfilePage = () => {
 
   return (
     <div style={{ fontFamily: $.f, background: $.bg, minHeight: '100vh' }}>
+      <Navbar showBack />
       {/* Breadcrumbs (Gap #7) */}
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <Breadcrumbs items={p.breadcrumbs || []} />
@@ -395,6 +399,9 @@ const ServiceProfilePage = () => {
           <button className="pill pill-gold" onClick={() => navigate(`/book/${slug}`)}>Book now</button>
         </div>
       </div>
+
+      <SEOFooter currentCity={p.city} currentCategory={p.category} />
+      <DirectoryFooter />
 
       <style>{`
         @media (max-width: 768px) {

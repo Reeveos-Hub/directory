@@ -1,6 +1,6 @@
 import SEO from '../../components/seo/SEO'
 import Navbar from '../../components/directory/Navbar';
-import ReeveNowFooter from '../../components/directory/ReeveNowFooter';
+import DirectoryFooter from '../../components/directory/DirectoryFooter';
 import FaqAccordion from '../../components/directory/FaqAccordion';
 
 export default function FaqsPage() {
@@ -39,7 +39,7 @@ export default function FaqsPage() {
         </div>
       </section>
 
-      <ReeveNowFooter />
+      <DirectoryFooter />
     </div>
   );
 }

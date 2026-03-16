@@ -15,6 +15,9 @@ import ReviewBreakdown from '../../components/directory/ReviewBreakdown'
 import AmenitiesDisplay from '../../components/directory/AmenitiesDisplay'
 import NearbySection from '../../components/directory/NearbySection'
 import ShareFavourite from '../../components/directory/ShareFavourite'
+import Navbar from '../../components/directory/Navbar'
+import DirectoryFooter from '../../components/directory/DirectoryFooter'
+import SEOFooter from '../../components/directory/SEOFooter'
 
 const $ = {
   bg: '#FFFFFF', card: '#FFFFFF', surface: '#F5F5F3',
@@ -116,6 +119,7 @@ const RestaurantProfilePage = () => {
 
   return (
     <div style={{ fontFamily: $.f, background: $.bg, minHeight: '100vh' }}>
+      <Navbar showBack />
       {/* Breadcrumbs */}
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <Breadcrumbs items={p.breadcrumbs || []} />
@@ -386,6 +390,9 @@ const RestaurantProfilePage = () => {
           Reserve a table — {resGuests} guests
         </button>
       </div>
+
+      <SEOFooter currentCity={p.city} currentCategory={p.category} />
+      <DirectoryFooter />
 
       <style>{`
         @media (max-width: 768px) { .hidden-mobile { display: none !important; } .show-mobile { display: block !important; } }

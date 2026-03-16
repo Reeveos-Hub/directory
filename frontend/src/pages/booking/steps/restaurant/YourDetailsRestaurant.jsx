@@ -124,7 +124,7 @@ const YourDetailsRestaurant = ({ data, onBack, onCreate }) => {
           {form.occasion && (
             <>
               <div className="h-px bg-gray-100" />
-              <p className="text-xs text-gray-500">🎉 {form.occasion}</p>
+              <p className="text-xs text-gray-500">{form.occasion}</p>
             </>
           )}
         </div>

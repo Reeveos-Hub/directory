@@ -14,6 +14,8 @@ import SocialProof from '../../components/directory/SocialProof'
 import TrendingDishes from '../../components/directory/TrendingDishes'
 import ListYourBusiness from '../../components/directory/ListYourBusiness'
 import DirectoryFooter from '../../components/directory/DirectoryFooter'
+import SEOFooter from '../../components/directory/SEOFooter'
+import Navbar from '../../components/directory/Navbar'
 
 const $ = {
   h: '#111111', m: '#6B7280', l: '#9CA3AF', acc: '#C9A84C',
@@ -57,6 +59,7 @@ const DirectoryLanding = () => {
 
   return (
     <div style={{ fontFamily: $.f }}>
+      <Navbar />
       {/* ═══ HERO SECTION ═══ */}
       <div style={{
         background: '#111', padding: '80px 24px 60px', textAlign: 'center',
@@ -231,6 +234,9 @@ const DirectoryLanding = () => {
       <div style={{ maxWidth: 800, margin: '0 auto 0', padding: '0 24px 48px' }}>
         <ListYourBusiness />
       </div>
+
+      {/* ═══ SEO FOOTER ═══ */}
+      <SEOFooter />
 
       {/* ═══ FOOTER ═══ */}
       <DirectoryFooter />

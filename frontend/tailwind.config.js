@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // ReeveOS Consumer Brand: Rich Black + Gold
+        // ReeveOS Brand: Rich Black #111111 + Gold #C9A84C + White
         primary: '#111111',
         'primary-hover': '#000000',
         accent: '#C9A84C',
@@ -22,16 +22,25 @@ export default {
         error: '#EF4444',
         info: '#3B82F6',
         text: {
+          DEFAULT: '#111111',
           main: '#111111',
           muted: '#6B7280',
           light: '#9CA3AF',
+          subtle: '#9CA3AF',
         },
         gold: '#C9A84C',
         black: '#111111',
+        // Brand token aliases — all components reference these
+        forest: { DEFAULT: '#111111', 90: '#222222', 80: '#333333' },
+        sage: '#C9A84C',
+        mint: '#C9A84C',
+        amber: '#C9A84C',
       },
       fontFamily: {
         sans: ['Figtree', 'system-ui', 'sans-serif'],
         display: ['Figtree', 'system-ui', 'sans-serif'],
+        heading: ['Figtree', 'system-ui', 'sans-serif'],
+        body: ['Figtree', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         card: '16px',

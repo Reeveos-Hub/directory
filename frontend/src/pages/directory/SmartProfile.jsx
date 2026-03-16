@@ -40,7 +40,9 @@ const SmartProfile = () => {
   if (error || !profile) return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 80, minHeight: '60vh', fontFamily: "'Figtree',sans-serif" }}>
       <div style={{ textAlign: 'center', maxWidth: 400 }}>
-        <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="1.5" style={{ marginBottom: 16 }}>
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
         <h2 style={{ fontSize: 22, fontWeight: 700, color: '#111', marginBottom: 8 }}>Business not found</h2>
         <p style={{ fontSize: 14, color: '#6B7280', marginBottom: 24 }}>
           We couldn't find a business called "{slug}". It might not be on Reeve yet.

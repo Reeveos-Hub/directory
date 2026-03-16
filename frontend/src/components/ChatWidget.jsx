@@ -55,12 +55,12 @@ function formatMsg(text) {
 }
 
 const quickButtons = [
-  { label: '💰 Pricing', q: 'What are your pricing plans?' },
-  { label: '🍽️ Restaurants', q: 'Tell me about restaurant features' },
+  { label: 'Pricing', q: 'What are your pricing plans?' },
+  { label: 'Restaurants', q: 'Tell me about restaurant features' },
   { label: '🚫 Zero Commission', q: 'How does zero commission work?' },
-  { label: '🚀 Get Started', q: 'How do I get started?' },
-  { label: '✨ Features', q: 'What features do you offer?' },
-  { label: '📧 Contact', q: 'How can I contact your team?' },
+  { label: 'Get Started', q: 'How do I get started?' },
+  { label: 'Features', q: 'What features do you offer?' },
+  { label: 'Contact', q: 'How can I contact your team?' },
 ]
 
 /* ─── Icons ─── */

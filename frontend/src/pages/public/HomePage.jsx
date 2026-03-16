@@ -5,10 +5,10 @@ const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const categories = [
-    { name: 'Restaurants', slug: 'restaurants', icon: '🍽️' },
-    { name: 'Barbers', slug: 'barbers', icon: '💈' },
-    { name: 'Salons', slug: 'salons', icon: '💅' },
-    { name: 'Spas', slug: 'spas', icon: '🧖' }
+    { name: 'Restaurants', slug: 'restaurants', icon: 'R' },
+    { name: 'Barbers', slug: 'barbers', icon: 'B' },
+    { name: 'Salons', slug: 'salons', icon: 'S' },
+    { name: 'Spas', slug: 'spas', icon: 'W' }
   ]
 
   return (

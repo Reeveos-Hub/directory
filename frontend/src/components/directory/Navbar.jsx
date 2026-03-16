@@ -1,91 +1,120 @@
+/**
+ * Navbar — ReeveOS branded directory navigation
+ * Rich Black #111111 + Gold #C9A84C + White
+ * R. mark, Figtree, monochrome SVG icons only, pill buttons
+ */
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+const $ = {
+  h: '#111111', acc: '#C9A84C', m: '#6B7280', l: '#9CA3AF',
+  bdr: '#E5E7EB', f: "'Figtree',-apple-system,sans-serif",
+}
+
+export default function Navbar({ showBack = false }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   useEffect(() => { setIsMobileOpen(false) }, [location.pathname])
 
-  const isActive = (path) => location.pathname === path
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+  }
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.08)]' : 'bg-white/80 backdrop-blur-md'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[72px]">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 shrink-0">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: '#1B4332' }}>
-                <span className="font-heading font-extrabold text-xl text-white">R</span>
-              </div>
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#FFB627] mr-2 flex-shrink-0">
-                <svg viewBox="0 0 32 32" className="w-6 h-6"><text x="10" y="22" fontFamily="Figtree, system-ui, sans-serif" fontWeight="800" fontSize="18" fill="#fff" textAnchor="middle">R</text><circle cx="22" cy="19" r="2.5" fill="#fff"/></svg>
-              </span>
-              <span className="text-forest font-heading font-extrabold text-[22px] tracking-tight">Reeve Now</span>
-            </Link>
-
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
-              <NavLink to="/" label="Home" active={isActive('/')} />
-              <NavLink to="/search" label="Find a Restaurant" active={isActive('/search')} />
-              <NavLink to="/faqs" label="FAQs" active={isActive('/faqs')} />
-            </div>
-
-            {/* Desktop Right — direct links to reeveos.app */}
-            <div className="hidden lg:flex items-center gap-3">
-              <a href="https://reeveos.app/login" className="text-forest font-semibold text-sm hover:text-sage transition-colors px-4 py-2.5">
-                Log in
-              </a>
-              <a href="https://reeveos.app/register" className="bg-forest text-white font-bold text-sm px-6 py-2.5 rounded-full hover:bg-sage transition-all duration-200 shadow-sm hover:shadow-md">
-                Sign Up Free
-              </a>
-            </div>
-
-            {/* Mobile toggle */}
-            <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center text-forest hover:bg-forest/5">
-              {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+        background: isScrolled ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.92)',
+        backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: isScrolled ? `1px solid ${$.bdr}` : '1px solid transparent',
+        transition: 'all 0.3s', fontFamily: $.f,
+      }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 16px', display: 'flex', alignItems: 'center', height: 64, gap: 12 }}>
+          {showBack && (
+            <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={$.h} strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
+          )}
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', flexShrink: 0 }}>
+            <div style={{ width: 36, height: 36, borderRadius: 10, background: $.h, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+              <span style={{ fontFamily: $.f, fontWeight: 800, fontSize: 18, color: $.acc }}>R</span>
+              <span style={{ fontFamily: $.f, fontWeight: 800, fontSize: 8, color: '#fff', position: 'absolute', bottom: 8, right: 7 }}>.</span>
+            </div>
+            <span style={{ fontSize: 20, fontWeight: 800, color: $.h, letterSpacing: -0.5 }}>Reeve</span>
+          </Link>
+
+          {!isHome && (
+            <form onSubmit={handleSearch} style={{ flex: 1, maxWidth: 400, position: 'relative', margin: '0 12px' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }}>
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+              </svg>
+              <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search treatments, venues..."
+                style={{ width: '100%', padding: '8px 12px 8px 36px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 13, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }}
+                onFocus={e => e.target.style.borderColor = $.acc} onBlur={e => e.target.style.borderColor = $.bdr} />
+            </form>
+          )}
+
+          <div style={{ flex: 1 }} />
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="hide-on-mobile">
+            {[{ to: '/', label: 'Home' }, { to: '/search', label: 'Explore' }, { to: '/live', label: 'Live', live: true }].map(link => (
+              <Link key={link.to} to={link.to} style={{
+                padding: '6px 14px', borderRadius: 8, fontSize: 13, fontWeight: 600,
+                color: location.pathname === link.to ? $.h : $.m,
+                background: location.pathname === link.to ? 'rgba(201,168,76,0.06)' : 'transparent',
+                textDecoration: 'none', transition: 'all 0.2s',
+              }}>
+                {link.label}
+                {link.live && <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: 99, background: '#22C55E', marginLeft: 4, verticalAlign: 'middle' }} />}
+              </Link>
+            ))}
           </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} className="hide-on-mobile">
+            <a href="https://reeveos.app/login" style={{ padding: '8px 20px', borderRadius: 99, fontSize: 13, fontWeight: 600, color: $.h, textDecoration: 'none' }}>Log in</a>
+            <a href="https://reeveos.app/register" className="pill pill-sm" style={{ fontSize: 13 }}>List your business</a>
+          </div>
+
+          <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="show-mobile-only"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: $.h, display: 'none' }}>
+            {isMobileOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            )}
+          </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-0 z-40 transition-all duration-300 ${isMobileOpen ? 'visible' : 'invisible'}`}>
-        <div className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${isMobileOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsMobileOpen(false)} />
-        <div className={`absolute top-[72px] left-0 right-0 bg-white border-b border-border shadow-xl transition-all duration-300 ${isMobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
-          <div className="px-4 py-6">
-            <Link to="/" className="block px-4 py-3 rounded-xl text-base font-semibold text-forest" onClick={() => setIsMobileOpen(false)}>Home</Link>
-            <Link to="/search" className="block px-4 py-3 rounded-xl text-base font-semibold text-forest" onClick={() => setIsMobileOpen(false)}>Find a Restaurant</Link>
-            <Link to="/faqs" className="block px-4 py-3 rounded-xl text-base font-semibold text-forest" onClick={() => setIsMobileOpen(false)}>FAQs</Link>
-            <div className="h-px bg-border my-4" />
-            <div className="flex flex-col gap-3">
-              <a href="https://reeveos.app/login" className="text-center text-forest font-bold text-sm py-3 rounded-xl border border-forest/20">Log in</a>
-              <a href="https://reeveos.app/register" className="text-center bg-forest text-white font-bold text-sm py-3 rounded-full">Sign Up Free</a>
-            </div>
+      {isMobileOpen && (
+        <div style={{ position: 'fixed', top: 64, left: 0, right: 0, bottom: 0, zIndex: 40, background: 'rgba(0,0,0,0.3)' }} onClick={() => setIsMobileOpen(false)}>
+          <div style={{ background: '#fff', borderBottom: `1px solid ${$.bdr}`, padding: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }} onClick={e => e.stopPropagation()}>
+            {[{ to: '/', label: 'Home' }, { to: '/search', label: 'Explore' }, { to: '/live', label: 'Live' }].map(link => (
+              <Link key={link.to} to={link.to} onClick={() => setIsMobileOpen(false)}
+                style={{ display: 'block', padding: '12px 16px', borderRadius: 12, fontSize: 15, fontWeight: 600, color: $.h, textDecoration: 'none' }}>{link.label}</Link>
+            ))}
+            <div style={{ height: 1, background: $.bdr, margin: '12px 0' }} />
+            <a href="https://reeveos.app/register" className="pill pill-gold" style={{ display: 'block', textAlign: 'center', width: '100%' }}>List your business</a>
           </div>
         </div>
-      </div>
-    </>
-  )
-}
+      )}
 
-function NavLink({ to, label, active }) {
-  return (
-    <Link to={to} className={`px-3.5 py-2 rounded-lg text-[13px] font-semibold transition-all duration-200 ${
-      active ? 'text-forest bg-forest/[0.06]' : 'text-forest/60 hover:text-forest hover:bg-forest/[0.04]'
-    }`}>
-      {label}
-    </Link>
+      <div style={{ height: 64 }} />
+      <style>{`
+        @media (max-width: 768px) { .hide-on-mobile { display: none !important; } .show-mobile-only { display: flex !important; } }
+        @media (min-width: 769px) { .show-mobile-only { display: none !important; } }
+      `}</style>
+    </>
   )
 }

@@ -7,16 +7,25 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getLiveFeed, subscribeToFeed } from '../../utils/directoryApi'
+import Navbar from '../../components/directory/Navbar'
+import DirectoryFooter from '../../components/directory/DirectoryFooter'
 
-const CATEGORY_ICONS = {
-  restaurant: '🍽',
-  barber: '✂',
-  salon: '💇',
-  aesthetics: '✨',
-  spa: '🧖',
-  nails: '💅',
-  cafe: '☕',
+/* Monochrome SVG icon paths — NEVER emojis */
+const CATEGORY_ICON_PATHS = {
+  restaurant: 'M8.1 13.34l2.83-2.83L3.91 3.5a4 4 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z',
+  barber: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64z',
+  salon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+  aesthetics: 'M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a.996.996 0 00-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z',
+  spa: 'M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63z',
+  nails: 'M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14z',
+  cafe: 'M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z',
 }
+
+const CategoryIcon = ({ category, size = 16, color = '#111111' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+    <path d={CATEGORY_ICON_PATHS[category] || CATEGORY_ICON_PATHS.restaurant} />
+  </svg>
+)
 
 // Pill-style category filter
 const CategoryPill = ({ label, active, onClick }) => (
@@ -82,7 +91,7 @@ const FeedCard = ({ item, onBook }) => {
           fontSize: 20, flexShrink: 0,
         }}>
           <span style={{ filter: 'grayscale(1) brightness(2)' }}>
-            {CATEGORY_ICONS[item.business_category] || '📍'}
+            <CategoryIcon category={item.business_category} size={18} color="#C9A84C" />
           </span>
         </div>
         <div style={{ minWidth: 0 }}>
@@ -207,7 +216,9 @@ const LiveFeed = () => {
   const categories = ['restaurant', 'barber', 'salon', 'aesthetics', 'spa', 'nails']
 
   return (
-    <div style={{ maxWidth: 800, margin: '0 auto', padding: '24px 16px' }}>
+    <div style={{ fontFamily: "'Figtree',-apple-system,sans-serif", minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Navbar showBack />
+      <div style={{ maxWidth: 800, margin: '0 auto', padding: '24px 16px', flex: 1 }}>
       {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
@@ -329,6 +340,8 @@ const LiveFeed = () => {
           </button>
         </div>
       )}
+      </div>
+      <DirectoryFooter />
     </div>
   )
 }
