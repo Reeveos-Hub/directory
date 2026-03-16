@@ -5,7 +5,7 @@ export default function ReeveNowFooter() {
   return (
     <footer className="mt-20">
       {/* Business Owner CTA Banner */}
-      <div className="bg-forest py-16 sm:py-20">
+      <div className="py-16 sm:py-20" style={{ background: "#1A2744" }}>
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white mb-4">
             Own a Restaurant, Salon, or Service Business?
@@ -14,7 +14,7 @@ export default function ReeveNowFooter() {
             Join Reeve Now and start accepting bookings in minutes. No per-cover fees, no contracts, just more customers.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <a href="https://reeveos.app/for-business" className="px-8 py-4 bg-white text-forest rounded-full font-bold border border-mint hover:bg-mint hover:text-white transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto text-center">
+            <a href="https://reeveos.app/for-business" className="px-8 py-4 bg-white text-reevenow-indigo rounded-full font-bold border border-amber-400 hover:bg-amber-400 hover:text-white transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto text-center">
               List Your Business
             </a>
             <a href="https://reeveos.app/contact.html" className="px-8 py-4 bg-transparent text-white rounded-full font-bold border border-white/40 hover:bg-white/10 hover:border-white transition-all w-full sm:w-auto text-center">
@@ -33,7 +33,7 @@ export default function ReeveNowFooter() {
       </div>
 
       {/* Main Footer */}
-      <div className="py-16" style={{ background: '#0D1F17' }}>
+      <div className="py-16" style={{ background: '#1A2744' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
             {/* Brand */}
@@ -56,7 +56,7 @@ export default function ReeveNowFooter() {
                   { Icon: Linkedin, href: 'https://linkedin.com/company/reevenow', label: 'LinkedIn' },
                   { Icon: Twitter, href: 'https://twitter.com/reevenow', label: 'Twitter' },
                 ].map(({ Icon, href, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white/50 hover:bg-mint hover:text-forest transition-all duration-200" aria-label={label}>
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white/50 hover:bg-amber-400 hover:text-reevenow-indigo transition-all duration-200" aria-label={label}>
                     <Icon className="w-4 h-4" />
                   </a>
                 ))}

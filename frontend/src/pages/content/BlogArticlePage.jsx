@@ -70,7 +70,7 @@ export default function BlogArticlePage() {
   const faqItems = post.schema?.faqItems || []
 
   return (
-    <div style={{ fontFamily: f, background: '#f9f9f7', minHeight: '100vh' }}>
+    <div style={{ fontFamily: f, background: '#ffffff', minHeight: '100vh' }}>
       <Navbar />
 
       {/* Breadcrumbs */}
@@ -139,7 +139,7 @@ export default function BlogArticlePage() {
           </div>
 
           {/* Author */}
-          <div style={{ marginTop: 32, background: '#f5f5f3', borderRadius: 14, padding: '20px', display: 'flex', gap: 14, alignItems: 'flex-start', border: '1px solid #e8e8e8' }}>
+          <div style={{ marginTop: 32, background: '#f8f8f8', borderRadius: 14, padding: '20px', display: 'flex', gap: 14, alignItems: 'flex-start', border: '1px solid #e8e8e8' }}>
             <div style={{ width: 44, height: 44, borderRadius: '50%', background: INDIGO, color: AMBER, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 16, flexShrink: 0 }}>
               {(post.eeat?.authorName || 'R')[0]}
             </div>

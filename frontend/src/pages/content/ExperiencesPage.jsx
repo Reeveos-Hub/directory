@@ -57,7 +57,7 @@ export default function ExperiencesPage() {
   }
 
   return (
-    <div style={{ fontFamily: f, background: '#f9f9f7', minHeight: '100vh' }}>
+    <div style={{ fontFamily: f, background: '#ffffff', minHeight: '100vh' }}>
       <Navbar />
 
       {/* Hero */}
