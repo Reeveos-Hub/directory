@@ -5,7 +5,7 @@ export default function ReeveNowFooter() {
   return (
     <footer className="mt-20">
       {/* Business Owner CTA Banner */}
-      <div className="py-16 sm:py-20" style={{ background: "#1A2744" }}>
+      <div className="py-16 sm:py-20" style={{ background: "#111111" }}>
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white mb-4">
             Own a Restaurant, Salon, or Service Business?
@@ -33,7 +33,7 @@ export default function ReeveNowFooter() {
       </div>
 
       {/* Main Footer */}
-      <div className="py-16" style={{ background: '#1A2744' }}>
+      <div className="py-16" style={{ background: '#111111' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
             {/* Brand */}

@@ -9,8 +9,8 @@ import Navbar from '../../components/directory/Navbar'
 import ReeveNowFooter from '../../components/directory/ReeveNowFooter'
 
 const API = import.meta.env.VITE_API_URL || 'https://api.reevenow.com'
-const INDIGO = '#1A2744'
-const AMBER = '#FFB627'
+const INDIGO = '#111111'
+const AMBER = '#C9A84C'
 const f = "'Figtree',-apple-system,sans-serif"
 
 const CITY_DATA = {
