@@ -65,7 +65,7 @@ const DirectoryLanding = () => {
   }
 
   return (
-    <div style={{ fontFamily: $.f }}>
+    <div style={{ fontFamily: $.f, overflowX: 'hidden', maxWidth: '100vw' }}>
       <Navbar />
       {/* ═══ HERO SECTION ═══ */}
       <div style={{
@@ -76,7 +76,7 @@ const DirectoryLanding = () => {
         <div style={{ position: 'absolute', top: '-20%', left: '20%', width: 400, height: 400, borderRadius: 999, background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)' }} />
         <div style={{ position: 'absolute', bottom: '-30%', right: '15%', width: 500, height: 500, borderRadius: 999, background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)' }} />
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, margin: '0 auto' }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, width: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
           <h1 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 800, color: '#fff', letterSpacing: -1, marginBottom: 12, lineHeight: 1.1 }}>
             Book & reserve{' '}
             <span style={{ color: $.acc }}>locally.</span>
@@ -90,9 +90,9 @@ const DirectoryLanding = () => {
             /* ── MOBILE: stacked form ── */
             <form onSubmit={handleSearch} style={{
               background: '#fff', borderRadius: 16, padding: 16,
-              maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box',
+              width: '100%', maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box',
               boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-              display: 'flex', flexDirection: 'column', gap: 10,
+              display: 'flex', flexDirection: 'column', gap: 10, overflow: 'hidden',
             }}>
               <div style={{ position: 'relative' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
@@ -119,7 +119,7 @@ const DirectoryLanding = () => {
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
                 <input type="date" value={searchDate} onChange={e => setSearchDate(e.target.value)} style={{
-                  width: '100%', padding: '14px 16px 14px 40px', border: '1.5px solid #E5E7EB', outline: 'none',
+                  width: '100%', maxWidth: '100%', padding: '14px 16px 14px 40px', border: '1.5px solid #E5E7EB', outline: 'none',
                   fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#f9fafb',
                 }} />
               </div>
