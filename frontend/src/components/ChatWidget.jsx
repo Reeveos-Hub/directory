@@ -4,12 +4,12 @@
  */
 import { useState, useRef, useEffect, useCallback } from 'react'
 
-const FOREST = '#1B4332'
-const MINT = '#52B788'
+const FOREST = '#111111'
+const MINT = '#C9A84C'
 
 /* ─── Knowledge Base ─── */
 const KB = {
-  greeting: "Hi! 👋 I'm Reeve Now's AI assistant. I can help with pricing, features, getting started, or any questions about our platform. What would you like to know?",
+  greeting: "Hi! I'm Reeve Now's AI assistant. I can help with pricing, features, getting started, or any questions about our platform. What would you like to know?",
   fallback: "Great question! I want to make sure you get the best answer. You can reach our team directly at hello@reeveos.app or use our contact page. Is there anything else I can help with?",
   topics: [
     { keys: ['price','pricing','cost','how much','plan','plans','subscription','free','tier'], answer: "**Reeve Now Pricing:**\n\n• **Free** — £0/mo · 1 staff, 100 bookings\n• **Starter** — £8.99/mo · 3 staff, reminders\n• **Growth** — £29/mo · 5 staff, deposits, CRM\n• **Scale** — £59/mo · Unlimited, floor plans, white-label\n• **Enterprise** — Custom pricing\n\nAll plans include zero commission. 30-day free trial!" },
@@ -23,9 +23,9 @@ const KB = {
     { keys: ['start','get started','sign up','signup','trial','begin','join'], answer: "**Getting started:**\n\n1. Sign up free — no credit card needed\n2. Set up your profile, services, and staff\n3. Start accepting bookings immediately\n\n30-day free trial on any plan!" },
     { keys: ['contact','support','help','email','speak','human','team'], answer: "**Get in touch:**\n\n• Email: hello@reeveos.app\n• Contact page: reeveos.app/contact.html\n• We typically reply within a few hours" },
     { keys: ['feature','what do','what can','include','offer'], answer: "**Key features:** Online booking, drag-and-drop calendar, floor plans, Stripe payments, CRM & analytics, SMS reminders, staff management, online ordering, Uber Direct delivery, white-label branding, directory listing." },
-    { keys: ['hello','hi','hey','good morning','good afternoon'], answer: "Hey there! 👋 Welcome to Reeve Now. I can help with pricing, features, getting started, or any questions. What can I help with?" },
+    { keys: ['hello','hi','hey','good morning','good afternoon'], answer: "Hey there! Welcome to Reeve Now. I can help with pricing, features, getting started, or any questions. What can I help with?" },
     { keys: ['thank','thanks','cheers','appreciate'], answer: "You're welcome! 😊 If you have more questions, I'm here. Have a great day!" },
-    { keys: ['bye','goodbye','see you','later'], answer: "Thanks for chatting! If you need anything, I'm always here. 👋" },
+    { keys: ['bye','goodbye','see you','later'], answer: "Thanks for chatting! If you need anything, I'm always here." },
     { keys: ['dashboard','how to','setting','manage','staff','schedule'], answer: "**Dashboard Help:**\n\nFrom your dashboard you can manage bookings, staff, services, and settings. Use the sidebar to navigate between Calendar, Bookings, Staff, Services, Customers, and Analytics. Need help with something specific? Just ask!" },
     { keys: ['no show','no-show','cancel','cancellation'], answer: "**No-show Protection:**\n\n• Collect card-on-file deposits\n• Automatic reminders reduce no-shows by up to 70%\n• Easy cancellation policy management\n• Charge no-show fees automatically\n\nAvailable on Growth plan and above." },
   ]
@@ -231,7 +231,7 @@ const ChatWidget = () => {
         position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
         width: 60, height: 60, borderRadius: '50%', background: FOREST, color: '#fff',
         border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        boxShadow: '0 6px 24px rgba(27,67,50,0.4)',
+        boxShadow: '0 6px 24px rgba(17,17,17,0.4)',
         transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
         transform: isOpen ? 'scale(1)' : 'scale(1)',
       }}>
