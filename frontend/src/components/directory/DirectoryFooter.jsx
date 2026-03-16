@@ -58,7 +58,7 @@ const DirectoryFooter = () => (
           <FooterLink to="/list-your-business">List Your Business</FooterLink>
           <ExtLink href="https://reeveos.app/industries/">Industries</ExtLink>
           <ExtLink href="https://reeveos.app#pricing">Pricing</ExtLink>
-          <ExtLink href="https://portal.rezvo.app/login">Partner Login</ExtLink>
+          <FooterLink to="/business">Partner Login</FooterLink>
         </div>
 
         {/* Company */}

@@ -110,8 +110,10 @@ const SearchPageV2 = () => {
               style={{ width: '100%', padding: '10px 12px 10px 34px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }}
               onFocus={e => e.target.style.borderColor = $.acc} onBlur={e => e.target.style.borderColor = $.bdr} />
           </div>
-          <input type="date" value={date} onChange={e => setDate(e.target.value)}
-            style={{ padding: '10px 14px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none' }} />
+          <div style={{ position: 'relative', flex: 1, minWidth: 120 }}>
+            <input type="date" value={date} onChange={e => setDate(e.target.value)}
+              style={{ width: '100%', padding: '10px 14px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }} />
+          </div>
           <button type="submit" className="pill pill-gold pill-sm">Search</button>
         </form>
       </div>

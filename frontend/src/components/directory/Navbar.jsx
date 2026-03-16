@@ -82,7 +82,7 @@ export default function Navbar({ showBack = false }) {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} className="hide-on-mobile">
-            <a href="https://portal.rezvo.app/login" style={{ padding: '8px 20px', borderRadius: 99, fontSize: 13, fontWeight: 600, color: $.h, textDecoration: 'none' }}>Log in</a>
+            <a href="/account" style={{ padding: '8px 20px', borderRadius: 99, fontSize: 13, fontWeight: 600, color: $.h, textDecoration: 'none' }}>Log in</a>
             <a href="/list-your-business" className="pill pill-sm" style={{ fontSize: 13 }}>List your business</a>
           </div>
 
@@ -100,7 +100,7 @@ export default function Navbar({ showBack = false }) {
       {isMobileOpen && (
         <div style={{ position: 'fixed', top: 64, left: 0, right: 0, bottom: 0, zIndex: 40, background: 'rgba(0,0,0,0.3)' }} onClick={() => setIsMobileOpen(false)}>
           <div style={{ background: '#fff', borderBottom: `1px solid ${$.bdr}`, padding: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }} onClick={e => e.stopPropagation()}>
-            {[{ to: '/', label: 'Home' }, { to: '/search', label: 'Explore' }, { to: '/live', label: 'Live' }].map(link => (
+            {[{ to: '/', label: 'Home' }, { to: '/search', label: 'Explore' }, { to: '/live', label: 'Live' }, { to: '/account', label: 'My Account' }].map(link => (
               <Link key={link.to} to={link.to} onClick={() => setIsMobileOpen(false)}
                 style={{ display: 'block', padding: '12px 16px', borderRadius: 12, fontSize: 15, fontWeight: 600, color: $.h, textDecoration: 'none' }}>{link.label}</Link>
             ))}
