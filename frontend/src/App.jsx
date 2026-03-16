@@ -58,6 +58,11 @@ import NotFoundPage from './pages/static/NotFoundPage'
 
 /* Booking flow */
 import BookingFlow from './pages/booking/BookingFlow'
+import BlogPage from './pages/content/BlogPage'
+import BlogArticlePage from './pages/content/BlogArticlePage'
+import ExperiencesPage from './pages/content/ExperiencesPage'
+import CityPage from './pages/content/CityPage'
+import ReviewsPage from './pages/content/ReviewsPage'
 import BookingConfirmation from './pages/booking/BookingConfirmation'
 import BookingManage from './pages/booking/BookingManage'
 
@@ -86,6 +91,13 @@ const App = () => {
           <Route path="/bookings" element={<ConsumerPortal />} />
 
           {/* Smart profile routing — auto-detects restaurant vs service */}
+          {/* Content / SEO routes */}
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          <Route path="/experiences" element={<ExperiencesPage />} />
+          <Route path="/city/:city" element={<CityPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+
           <Route path="/:slug" element={<SmartProfile />} />
 
           {/* Legacy routes (kept for backwards compat) */}
