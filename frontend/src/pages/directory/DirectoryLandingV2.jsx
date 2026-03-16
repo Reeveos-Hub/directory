@@ -39,6 +39,13 @@ const DirectoryLanding = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchLocation, setSearchLocation] = useState('')
   const [searchDate, setSearchDate] = useState(new Date().toISOString().slice(0,10))
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+
+  useEffect(() => {
+    const h = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener('resize', h)
+    return () => window.removeEventListener('resize', h)
+  }, [])
 
   useEffect(() => {
     getHomePage().then(setData).catch(() => {}).finally(() => setLoading(false))
@@ -78,54 +85,91 @@ const DirectoryLanding = () => {
             Haircuts, facials, restaurants, barbers — one search, zero booking fees.
           </p>
 
-          {/* Search bar (Gap #26 — 3-field: treatment + location + date) */}
-          <form onSubmit={handleSearch} className="hero-search-form" style={{
-            display: 'flex', background: '#fff', borderRadius: 99, padding: 6,
-            maxWidth: 700, width: '100%', margin: '0 auto', gap: 0, flexWrap: 'wrap',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.15)', boxSizing: 'border-box',
-          }}>
-            <div style={{ flex: 2, minWidth: 140, position: 'relative' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)' }}>
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-              </svg>
-              <input
-                type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Treatment or venue" style={{
-                  width: '100%', padding: '14px 16px 14px 44px', border: 'none', outline: 'none',
-                  fontSize: 15, fontFamily: $.f, borderRadius: '99px 0 0 99px', boxSizing: 'border-box',
-                }}
-              />
-            </div>
-            <div className="search-divider" style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
-            <div style={{ flex: 1.5, minWidth: 120, position: 'relative' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-              <input
-                type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)}
-                placeholder="City or postcode" style={{
+          {/* Search bar */}
+          {isMobile ? (
+            /* ── MOBILE: stacked form ── */
+            <form onSubmit={handleSearch} style={{
+              background: '#fff', borderRadius: 16, padding: 16,
+              maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+              display: 'flex', flexDirection: 'column', gap: 10,
+            }}>
+              <div style={{ position: 'relative' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Treatment or venue" style={{
+                    width: '100%', padding: '14px 16px 14px 42px', border: '1.5px solid #E5E7EB', outline: 'none',
+                    fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#fff',
+                  }} />
+              </div>
+              <div style={{ position: 'relative' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)}
+                  placeholder="City or postcode" style={{
+                    width: '100%', padding: '14px 16px 14px 40px', border: '1.5px solid #E5E7EB', outline: 'none',
+                    fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#fff',
+                  }} />
+              </div>
+              <div style={{ position: 'relative' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <input type="date" value={searchDate} onChange={e => setSearchDate(e.target.value)} style={{
+                  width: '100%', padding: '14px 16px 14px 40px', border: '1.5px solid #E5E7EB', outline: 'none',
+                  fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#f9fafb',
+                }} />
+              </div>
+              <button type="submit" className="pill pill-gold" style={{ width: '100%', padding: '14px 28px', borderRadius: 12 }}>
+                Search
+              </button>
+            </form>
+          ) : (
+            /* ── DESKTOP: pill form ── */
+            <form onSubmit={handleSearch} style={{
+              display: 'flex', background: '#fff', borderRadius: 99, padding: 6,
+              maxWidth: 700, margin: '0 auto', gap: 0,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+            }}>
+              <div style={{ flex: 2, minWidth: 140, position: 'relative' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)' }}>
+                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Treatment or venue" style={{
+                    width: '100%', padding: '14px 16px 14px 44px', border: 'none', outline: 'none',
+                    fontSize: 15, fontFamily: $.f, borderRadius: '99px 0 0 99px', boxSizing: 'border-box',
+                  }} />
+              </div>
+              <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
+              <div style={{ flex: 1.5, minWidth: 120, position: 'relative' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)}
+                  placeholder="City or postcode" style={{
+                    width: '100%', padding: '14px 16px 14px 40px', border: 'none', outline: 'none',
+                    fontSize: 15, fontFamily: $.f, boxSizing: 'border-box',
+                  }} />
+              </div>
+              <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
+              <div style={{ flex: 1, minWidth: 120, position: 'relative' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <input type="date" value={searchDate} onChange={e => setSearchDate(e.target.value)} style={{
                   width: '100%', padding: '14px 16px 14px 40px', border: 'none', outline: 'none',
                   fontSize: 15, fontFamily: $.f, boxSizing: 'border-box',
-                }}
-              />
-            </div>
-            <div className="search-divider" style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
-            <div style={{ flex: 1, minWidth: 120, position: 'relative' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              <input
-                type="date" value={searchDate} onChange={e => setSearchDate(e.target.value)}
-                style={{
-                  width: '100%', padding: '14px 16px 14px 40px', border: 'none', outline: 'none',
-                  fontSize: 15, fontFamily: $.f, boxSizing: 'border-box',
-                }}
-              />
-            </div>
-            <button type="submit" className="pill pill-gold" style={{ margin: 2, padding: '12px 28px' }}>
-              Search
-            </button>
-          </form>
+                }} />
+              </div>
+              <button type="submit" className="pill pill-gold" style={{ margin: 2, padding: '12px 28px' }}>
+                Search
+              </button>
+            </form>
+          )}
         </div>
       </div>
 
