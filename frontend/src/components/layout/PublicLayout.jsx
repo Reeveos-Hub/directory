@@ -25,8 +25,8 @@ const PublicLayout = () => {
                 <Link to="/profile" className="text-text hover:text-forest">{user?.name}</Link>
               ) : (
                 <>
-                  <a href="https://reeveos.app/login" className="text-forest hover:text-forest-90 font-medium">Log in</a>
-                  <a href="https://reeveos.app/register" className="btn-primary">Sign up</a>
+                  <a href="https://portal.rezvo.app/login" className="text-forest hover:text-forest-90 font-medium">Log in</a>
+                  <a href="https://portal.rezvo.app/register" className="btn-primary">Sign up</a>
                 </>
               )}
             </div>

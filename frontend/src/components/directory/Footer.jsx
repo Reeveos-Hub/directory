@@ -52,8 +52,8 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li><a href="https://reeveos.app/for-business" className="hover:text-mint transition-colors">How It Works</a></li>
               <li><a href="https://reeveos.app/for-business#pricing" className="hover:text-mint transition-colors">Pricing</a></li>
-              <li><a href="https://reeveos.app/register" className="hover:text-mint transition-colors">Get Started</a></li>
-              <li><a href="https://reeveos.app/login" className="hover:text-mint transition-colors">Partner Login</a></li>
+              <li><a href="https://portal.rezvo.app/register" className="hover:text-mint transition-colors">Get Started</a></li>
+              <li><a href="https://portal.rezvo.app/login" className="hover:text-mint transition-colors">Partner Login</a></li>
             </ul>
           </div>
 

@@ -74,8 +74,8 @@ const App = () => {
           <Route path="/categories/:category" element={<CategoryCityPage />} />
 
           {/* Auth — redirect to reeveos.app */}
-          <Route path="/login" element={<ExternalRedirect to="https://reeveos.app/login" />} />
-          <Route path="/signup" element={<ExternalRedirect to="https://reeveos.app/register" />} />
+          <Route path="/login" element={<ExternalRedirect to="https://portal.rezvo.app/login" />} />
+          <Route path="/signup" element={<ExternalRedirect to="https://portal.rezvo.app/register" />} />
           <Route path="/faqs" element={<FaqsPage />} />
 
           {/* Static page redirects */}
