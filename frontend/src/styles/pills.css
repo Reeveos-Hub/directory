@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════
+   REEVE PILL BUTTON SYSTEM
+   Global styles matching portal ClientPortal.jsx
+   borderRadius: 99px, Figtree, 700 weight
+   White bg, gold outline, black text
+   Hover: black bg, gold text, gold glow
+   ═══════════════════════════════════════════ */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 28px;
+  border-radius: 99px;
+  border: 2px solid #C9A84C;
+  background: #FFFFFF;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Figtree', -apple-system, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+}
+.pill:hover {
+  background: #111111;
+  color: #C9A84C;
+  box-shadow: 0 0 20px 5px rgba(201,168,76,0.3), 0 0 6px rgba(201,168,76,0.15);
+}
+
+.pill-sm {
+  padding: 7px 20px;
+  font-size: 12px;
+}
+
+.pill-lg {
+  padding: 14px 40px;
+  font-size: 16px;
+}
+
+.pill-xl {
+  padding: 16px 48px;
+  font-size: 16px;
+}
+
+/* Full-width variant (sidebars, footers) */
+.pill-full {
+  width: 100%;
+  text-align: center;
+}
+
+/* Solid gold variant (highest priority CTA) */
+.pill-gold {
+  background: #C9A84C;
+  color: #111111;
+  border-color: #C9A84C;
+}
+.pill-gold:hover {
+  background: #D4B35A;
+  color: #111111;
+  box-shadow: 0 0 28px 6px rgba(201,168,76,0.4), 0 0 8px rgba(201,168,76,0.25);
+}
+
+/* Black fill variant (for dark backgrounds) */
+.pill-dark {
+  background: #111111;
+  color: #C9A84C;
+}
+.pill-dark:hover {
+  background: rgba(201,168,76,0.08);
+  box-shadow: 0 0 20px 5px rgba(201,168,76,0.3), 0 0 6px rgba(201,168,76,0.15);
+}
+
+/* Time slot pill */
+.pill-time {
+  padding: 8px 18px;
+  border-radius: 99px;
+  border: 2px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Figtree', -apple-system, sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.pill-time:hover {
+  border-color: #C9A84C;
+  background: #111111;
+  color: #C9A84C;
+  box-shadow: 0 0 14px 3px rgba(201,168,76,0.2);
+}
+.pill-time.active,
+.pill-time[data-active="true"] {
+  border: 2px solid #C9A84C;
+  background: #111111;
+  color: #C9A84C;
+  font-weight: 700;
+}
+
+/* Filter pill */
+.pill-filter {
+  padding: 7px 16px;
+  border-radius: 99px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Figtree', -apple-system, sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.pill-filter:hover {
+  border-color: #C9A84C;
+  color: #111111;
+}
+.pill-filter.active,
+.pill-filter[data-active="true"] {
+  background: #111111;
+  color: #C9A84C;
+  border-color: #111111;
+  font-weight: 700;
+}
+
+/* Urgent/live pulse */
+.pill-urgent {
+  animation: urgentPulse 2s ease-in-out infinite;
+}
+@keyframes urgentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+  50% { box-shadow: 0 0 16px 4px rgba(201,168,76,0.25); }
+}
+
+/* Badge pill */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Figtree', -apple-system, sans-serif;
+}
+.badge-pill-gold {
+  background: rgba(201,168,76,0.08);
+  color: #C9A84C;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.badge-pill-green {
+  background: rgba(34,197,94,0.08);
+  color: #22C55E;
+  border: 1px solid rgba(34,197,94,0.2);
+}
+.badge-pill-dark {
+  background: rgba(17,17,17,0.85);
+  color: #C9A84C;
+  backdrop-filter: blur(8px);
+}
