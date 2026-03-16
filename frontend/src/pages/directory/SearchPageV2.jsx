@@ -34,7 +34,7 @@ const SearchPageV2 = () => {
   const [results, setResults] = useState([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [showMap, setShowMap] = useState(true)
+  const [showMap, setShowMap] = useState(window.innerWidth > 768)
   const [userLocation, setUserLocation] = useState(null)
 
   const [query, setQuery] = useState(params.get('q') || '')

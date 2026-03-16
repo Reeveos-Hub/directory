@@ -62,7 +62,7 @@ const DirectoryLanding = () => {
       <Navbar />
       {/* ═══ HERO SECTION ═══ */}
       <div style={{
-        background: '#111', padding: '80px 24px 60px', textAlign: 'center',
+        background: '#111', padding: 'clamp(40px, 8vw, 80px) 16px clamp(40px, 6vw, 60px)', textAlign: 'center',
         position: 'relative', overflow: 'hidden',
       }}>
         {/* Gold glow effects */}
