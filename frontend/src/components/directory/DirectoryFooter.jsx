@@ -49,15 +49,15 @@ const DirectoryFooter = () => (
           <ExtLink href="https://reeveos.app/features/bookings.html">Smart Booking</ExtLink>
           <ExtLink href="https://reeveos.app/features/epos.html">EPOS</ExtLink>
           <ExtLink href="https://reeveos.app/features/crm.html">CRM</ExtLink>
-          <ExtLink href="https://reeveos.app">Payments</ExtLink>
+          <ExtLink href="https://reeveos.app/features/payments.html">Payments</ExtLink>
         </div>
 
         {/* For Business */}
         <div>
           <h4 style={{ fontSize: 13, fontWeight: 700, color: $.acc, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>For Business</h4>
-          <ExtLink href="https://reeveos.app">List Your Business</ExtLink>
+          <ExtLink href="https://reeveos.app/register">List Your Business</ExtLink>
           <ExtLink href="https://reeveos.app/industries/">Industries</ExtLink>
-          <ExtLink href="https://reeveos.app">Pricing</ExtLink>
+          <ExtLink href="https://reeveos.app#pricing">Pricing</ExtLink>
           <ExtLink href="https://portal.rezvo.app/login">Partner Login</ExtLink>
         </div>
 

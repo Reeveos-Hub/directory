@@ -12,7 +12,7 @@ const ListYourBusiness = () => (
       <p style={{ fontSize: 15, color: '#9CA3AF', marginBottom: 24, maxWidth: 440, margin: '0 auto 24px' }}>
         Join Reeve and get bookings, EPOS, CRM and payments — zero commission, from £0/month.
       </p>
-      <a href="https://reeveos.app" className="pill pill-gold pill-lg" style={{ textDecoration: 'none' }}>
+      <a href="https://reeveos.app/register" className="pill pill-gold pill-lg" style={{ textDecoration: 'none' }}>
         List your business — it's free
       </a>
     </div>
