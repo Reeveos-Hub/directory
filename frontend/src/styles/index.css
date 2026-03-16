@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BRAND ENFORCEMENT — DO NOT REMOVE */
+/* BRAND ENFORCEMENT — Rich Black #111111 + Gold #C9A84C — DO NOT REMOVE */
 body, p, span, a, button, input, select, textarea, li, td, th, label, div {
   font-family: 'Figtree', system-ui, sans-serif;
 }
@@ -24,23 +24,23 @@ h1, h2, h3, h4, h5, h6,
 
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-input font-medium transition-all duration-fast;
+    @apply px-6 py-3 rounded-input font-medium transition-all duration-200;
   }
 
   .btn-primary {
-    @apply btn bg-forest text-white hover:bg-sage;
+    @apply btn bg-primary text-white hover:bg-primary-hover;
   }
 
   .btn-secondary {
-    @apply btn bg-off-white text-text hover:bg-border;
+    @apply btn bg-surface text-primary hover:bg-border;
   }
 
   .btn-outline {
-    @apply btn border-2 border-forest text-forest hover:bg-forest hover:text-white;
+    @apply btn border-2 border-accent text-primary hover:bg-primary hover:text-accent;
   }
 
   .input {
-    @apply w-full px-4 py-3 rounded-input border border-border bg-white text-text placeholder:text-subtle focus:outline-none focus:ring-2 focus:ring-mint transition-all duration-fast;
+    @apply w-full px-4 py-3 rounded-input border border-border bg-white text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-200;
   }
 
   .card {
@@ -52,15 +52,15 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .badge-success {
-    @apply badge bg-pale-green text-forest;
+    @apply badge bg-success/10 text-success;
   }
 
   .badge-warning {
-    @apply badge bg-gold/20 text-gold;
+    @apply badge bg-warning/10 text-warning;
   }
 
   .badge-error {
-    @apply badge bg-coral/20 text-coral;
+    @apply badge bg-error/10 text-error;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
