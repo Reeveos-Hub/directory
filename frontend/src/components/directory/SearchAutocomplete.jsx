@@ -95,6 +95,16 @@ export function QueryAutocomplete({ value, onChange, onSelect, placeholder = "Tr
   const wrapRef = useRef(null)
 
   useEffect(() => {
+    if (value.length === 0) {
+      setSugg([
+        { text: 'Restaurants', type: 'category' },
+        { text: 'Hair & Beauty', type: 'category' },
+        { text: 'Barbers', type: 'category' },
+        { text: 'Fitness', type: 'category' },
+        { text: 'Wellness', type: 'category' },
+      ])
+      return
+    }
     if (value.length < 2) { setSugg([]); return }
     const t = setTimeout(async () => {
       try {
@@ -140,7 +150,7 @@ export function QueryAutocomplete({ value, onChange, onSelect, placeholder = "Tr
       <PortalDropdown anchorRef={wrapRef} show={show && sugg.length > 0}>
         {cats.length > 0 && (
           <>
-            <Label text="Categories" />
+            <Label text={value.length === 0 ? "What are you looking for?" : "Categories"} />
             {cats.map((s, i) => (
               <Row key={`c${i}`} active={active === i} onClick={() => pick(s)}>
                 <CatIcon /><span style={{ fontWeight: 500 }}>{s.text}</span>
@@ -159,9 +169,9 @@ export function QueryAutocomplete({ value, onChange, onSelect, placeholder = "Tr
             ))}
           </>
         )}
-        <div style={{ padding: '8px 16px', borderTop: '1px solid #F3F4F6', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#9CA3AF', fontFamily: F }}>
+        {value.length > 0 && <div style={{ padding: '8px 16px', borderTop: '1px solid #F3F4F6', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#9CA3AF', fontFamily: F }}>
           <SearchIcon /><span>Search for <strong style={{ color: '#111' }}>"{value}"</strong></span>
-        </div>
+        </div>}
       </PortalDropdown>
     </div>
   )

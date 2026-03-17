@@ -11,7 +11,7 @@ const $ = {
   bdr: '#E5E7EB', f: "'Figtree',-apple-system,sans-serif",
 }
 
-export default function Navbar({ showBack = false }) {
+export default function Navbar({ showBack = false, hideSearch = false }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -59,7 +59,7 @@ export default function Navbar({ showBack = false }) {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }}>
                 <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
               </svg>
-              <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search treatments, venues..."
+              <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search treatments, venues..." data-nav-search="true"
                 style={{ width: '100%', padding: '8px 12px 8px 36px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 13, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }}
                 onFocus={e => e.target.style.borderColor = $.acc} onBlur={e => e.target.style.borderColor = $.bdr} />
             </form>

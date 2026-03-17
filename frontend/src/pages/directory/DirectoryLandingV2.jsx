@@ -93,7 +93,7 @@ const DirectoryLanding = () => {
               background: '#fff', borderRadius: 16, padding: 16,
               width: '100%', maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box',
               boxShadow: '0 8px 32px rgba(0,0,0,0.15)', overflow: 'visible',
-              display: 'flex', flexDirection: 'column', gap: 10, overflow: 'visible',
+              display: 'flex', flexDirection: 'column', gap: 10,
             }}>
               <QueryAutocomplete value={searchQuery} onChange={setSearchQuery}
                 style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, background: '#fff' }} />
@@ -160,7 +160,7 @@ const DirectoryLanding = () => {
             >
               <div className="cat-circle" style={{
                 width: 80, height: 80, borderRadius: 99, position: 'relative', zIndex: 10,
-                overflow: 'visible', transition: 'all 0.3s',
+                overflow: 'hidden', transition: 'all 0.3s',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <img src={cat.photo} alt={cat.label} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} />
@@ -216,7 +216,7 @@ const DirectoryLanding = () => {
             <h2 style={{ fontSize: 22, fontWeight: 800, color: $.h, margin: 0 }}>Recommended near you</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-            {data.trending.slice(0, 8).map(biz => (
+            {data.trending.slice(0, 9).map(biz => (
               <BusinessCard key={biz.id || biz.slug} business={biz} />
             ))}
           </div>

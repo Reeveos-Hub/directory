@@ -93,7 +93,7 @@ const SearchPageV2 = () => {
 
   return (
     <div style={{ fontFamily: $.f, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Navbar showBack />
+      <Navbar showBack hideSearch />
 
       {/* Top search bar */}
       <div style={{ borderBottom: `1px solid ${$.bdr}`, padding: '12px 24px', background: '#fff' }}>
@@ -187,6 +187,7 @@ const SearchPageV2 = () => {
       <style>{`
         @keyframes spin { to { transform: rotate(360deg) } }
         @media (max-width: 768px) { .hide-on-mobile { display: none !important; } }
+        [data-nav-search] { display: none !important; }
       `}</style>
     </div>
   )
