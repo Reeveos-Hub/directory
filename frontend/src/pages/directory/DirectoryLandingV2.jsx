@@ -16,6 +16,7 @@ import ListYourBusiness from '../../components/directory/ListYourBusiness'
 import DirectoryFooter from '../../components/directory/DirectoryFooter'
 import SEOFooter from '../../components/directory/SEOFooter'
 import Navbar from '../../components/directory/Navbar'
+import { QueryAutocomplete, CityAutocomplete } from '../../components/directory/SearchAutocomplete'
 
 const $ = {
   h: '#111111', m: '#6B7280', l: '#9CA3AF', acc: '#C9A84C',
@@ -70,7 +71,7 @@ const DirectoryLanding = () => {
       {/* ═══ HERO SECTION ═══ */}
       <div style={{
         background: '#111', padding: 'clamp(40px, 8vw, 80px) 16px clamp(40px, 6vw, 60px)', textAlign: 'center',
-        position: 'relative', overflow: 'hidden',
+        position: 'relative', zIndex: 10,
       }}>
         {/* Gold glow effects */}
         <div style={{ position: 'absolute', top: '-20%', left: '20%', width: 400, height: 400, borderRadius: 999, background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)' }} />
@@ -91,29 +92,13 @@ const DirectoryLanding = () => {
             <form onSubmit={handleSearch} style={{
               background: '#fff', borderRadius: 16, padding: 16,
               width: '100%', maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-              display: 'flex', flexDirection: 'column', gap: 10, overflow: 'hidden',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.15)', overflow: 'visible',
+              display: 'flex', flexDirection: 'column', gap: 10, overflow: 'visible',
             }}>
-              <div style={{ position: 'relative' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
-                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-                </svg>
-                <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Treatment or venue" style={{
-                    width: '100%', padding: '14px 16px 14px 42px', border: '1.5px solid #E5E7EB', outline: 'none',
-                    fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#fff',
-                  }} />
-              </div>
-              <div style={{ position: 'relative' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-                <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)}
-                  placeholder="City or postcode" style={{
-                    width: '100%', padding: '14px 16px 14px 40px', border: '1.5px solid #E5E7EB', outline: 'none',
-                    fontSize: 15, fontFamily: $.f, borderRadius: 12, boxSizing: 'border-box', background: '#fff',
-                  }} />
-              </div>
+              <QueryAutocomplete value={searchQuery} onChange={setSearchQuery}
+                style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, background: '#fff' }} />
+              <CityAutocomplete value={searchLocation} onChange={setSearchLocation}
+                style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, background: '#fff' }} />
               <div style={{ position: 'relative' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -131,30 +116,14 @@ const DirectoryLanding = () => {
             /* ── DESKTOP: pill form ── */
             <form onSubmit={handleSearch} style={{
               display: 'flex', background: '#fff', borderRadius: 99, padding: 6,
-              maxWidth: 700, margin: '0 auto', gap: 0,
-              boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+              maxWidth: 700, margin: '0 auto', gap: 0, position: 'relative', zIndex: 100,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.15)', overflow: 'visible',
             }}>
-              <div style={{ flex: 2, minWidth: 140, position: 'relative' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)' }}>
-                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-                </svg>
-                <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Treatment or venue" style={{
-                    width: '100%', padding: '14px 16px 14px 44px', border: 'none', outline: 'none',
-                    fontSize: 15, fontFamily: $.f, borderRadius: '99px 0 0 99px', boxSizing: 'border-box',
-                  }} />
-              </div>
+              <QueryAutocomplete value={searchQuery} onChange={setSearchQuery}
+                style={{ flex: 2, minWidth: 140 }} />
               <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
-              <div style={{ flex: 1.5, minWidth: 120, position: 'relative' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-                <input type="text" value={searchLocation} onChange={e => setSearchLocation(e.target.value)}
-                  placeholder="City or postcode" style={{
-                    width: '100%', padding: '14px 16px 14px 40px', border: 'none', outline: 'none',
-                    fontSize: 15, fontFamily: $.f, boxSizing: 'border-box',
-                  }} />
-              </div>
+              <CityAutocomplete value={searchLocation} onChange={setSearchLocation}
+                style={{ flex: 1.5, minWidth: 120 }} />
               <div style={{ width: 1, background: '#E5E7EB', margin: '8px 0' }} />
               <div style={{ flex: 1, minWidth: 120, position: 'relative' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }}>
@@ -190,8 +159,8 @@ const DirectoryLanding = () => {
             onMouseLeave={e => { e.currentTarget.querySelector('.cat-circle').style.transform = 'scale(1)'; e.currentTarget.querySelector('.cat-circle').style.boxShadow = 'none' }}
             >
               <div className="cat-circle" style={{
-                width: 80, height: 80, borderRadius: 99, position: 'relative',
-                overflow: 'hidden', transition: 'all 0.3s',
+                width: 80, height: 80, borderRadius: 99, position: 'relative', zIndex: 10,
+                overflow: 'visible', transition: 'all 0.3s',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <img src={cat.photo} alt={cat.label} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} />

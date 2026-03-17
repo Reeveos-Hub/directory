@@ -35,7 +35,7 @@ export default function RestaurantCard({ listing, showTimeSlots = true, onNotify
           className={`w-full h-full object-cover ${
             isRegistered ? 'group-hover:scale-105 transition-transform duration-500' : 'grayscale'
           }`}
-          src={listing.photo || listing.photos?.[0] || '/images/placeholder-restaurant.png'}
+          src={listing.photos?.[0] || listing.photo || '/images/placeholder-restaurant.png'}
           alt={listing.name}
           loading="lazy"
         />

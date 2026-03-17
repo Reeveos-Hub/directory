@@ -32,6 +32,7 @@ const ExternalRedirect = ({ to }) => {
 /* ═══ DIRECTORY PAGES ═══ */
 import DirectoryLandingV2 from './pages/directory/DirectoryLandingV2'
 import SearchPageV2 from './pages/directory/SearchPageV2'
+import AreaPage from './pages/directory/AreaPage'
 import SmartProfile from './pages/directory/SmartProfile'
 
 /* Lazy-loaded pages (don't block initial render) */
@@ -105,6 +106,8 @@ const App = () => {
           <Route path="/venue/:slug" element={<SmartProfile />} />
 
           {/* SEO category + city pages (Gap #39 — /barbers/sheffield) */}
+          <Route path="/area/:area/:category" element={<AreaPage />} />
+          <Route path="/area/:area" element={<AreaPage />} />
           <Route path="/categories/:category/:city" element={<CategoryCityPage />} />
           <Route path="/categories/:category" element={<CategoryCityPage />} />
 

@@ -1,11 +1,11 @@
 /**
  * SearchPageV2 — Search results with real Leaflet map
- * Fixes: "All" filter bug, emoji removed, real map, nav + footer
- * Split layout: cards left, interactive map right (desktop)
+ * Premium autocomplete, correct categories, photo proxy
  */
 import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { searchWithAvailability } from '../../utils/directoryApi'
+import { QueryAutocomplete, CityAutocomplete } from '../../components/directory/SearchAutocomplete'
 import BusinessCard from '../../components/directory/BusinessCard'
 import Navbar from '../../components/directory/Navbar'
 import DirectoryFooter from '../../components/directory/DirectoryFooter'
@@ -19,17 +19,17 @@ const $ = {
 
 const CATEGORIES = [
   { id: '', label: 'All' },
-  { id: 'restaurant', label: 'Restaurants' },
-  { id: 'salon', label: 'Salons' },
-  { id: 'barber', label: 'Barbers' },
-  { id: 'aesthetics', label: 'Aesthetics' },
-  { id: 'nails', label: 'Nails' },
-  { id: 'spa', label: 'Spas' },
-  { id: 'cafe', label: 'Cafés' },
+  { id: 'Restaurants', label: 'Restaurants' },
+  { id: 'Hair & Beauty', label: 'Salons' },
+  { id: 'Barbers', label: 'Barbers' },
+  { id: 'Health', label: 'Aesthetics' },
+  { id: 'Wellness', label: 'Spas' },
+  { id: 'Fitness', label: 'Fitness' },
+  { id: 'Tattoo & Piercing', label: 'Tattoo' },
 ]
 
 const SearchPageV2 = () => {
-  const [params] = useSearchParams()
+  const [params, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const [results, setResults] = useState([])
   const [total, setTotal] = useState(0)
@@ -57,8 +57,7 @@ const SearchPageV2 = () => {
     setLoading(true)
     try {
       const searchParams = { limit: 20, date }
-      if (query) searchParams.query = query
-      // FIX: Only send category if it's not empty (All = no filter)
+      if (query) searchParams.q = query
       if (category) searchParams.category = category
       if (city) searchParams.city = city
       if (minRating) searchParams.min_rating = minRating
@@ -76,6 +75,13 @@ const SearchPageV2 = () => {
       setTotal(0)
     } finally {
       setLoading(false)
+      // Sync URL so back button preserves state
+      const newParams = new URLSearchParams()
+      if (query) newParams.set('q', query)
+      if (category) newParams.set('category', category)
+      if (city) newParams.set('city', city)
+      if (date) newParams.set('date', date)
+      setSearchParams(newParams, { replace: true })
     }
   }, [query, category, city, date, minRating, openNow, userLocation])
 
@@ -91,25 +97,20 @@ const SearchPageV2 = () => {
 
       {/* Top search bar */}
       <div style={{ borderBottom: `1px solid ${$.bdr}`, padding: '12px 24px', background: '#fff' }}>
-        <form onSubmit={e => { e.preventDefault(); doSearch() }} className="hero-search-form" style={{
+        <form onSubmit={e => { e.preventDefault(); doSearch() }} style={{
           display: 'flex', gap: 8, maxWidth: 1200, margin: '0 auto', alignItems: 'center', flexWrap: 'wrap',
         }}>
-          <div style={{ position: 'relative', flex: 2, minWidth: 140 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }}>
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-            <input type="text" value={query} onChange={e => setQuery(e.target.value)} placeholder="Treatment or venue"
-              style={{ width: '100%', padding: '10px 12px 10px 36px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }}
-              onFocus={e => e.target.style.borderColor = $.acc} onBlur={e => e.target.style.borderColor = $.bdr} />
-          </div>
-          <div style={{ position: 'relative', flex: 1, minWidth: 120 }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="2" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }}>
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="City"
-              style={{ width: '100%', padding: '10px 12px 10px 34px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }}
-              onFocus={e => e.target.style.borderColor = $.acc} onBlur={e => e.target.style.borderColor = $.bdr} />
-          </div>
+          <QueryAutocomplete
+            value={query}
+            onChange={setQuery}
+            onSelect={(item) => { if (item.type === 'category') setCategory(item.text) }}
+            style={{ flex: 2, minWidth: 140, background: '#fff', border: `1.5px solid ${$.bdr}`, borderRadius: 99 }}
+          />
+          <CityAutocomplete
+            value={city}
+            onChange={setCity}
+            style={{ flex: 1, minWidth: 120, background: '#fff', border: `1.5px solid ${$.bdr}`, borderRadius: 99 }}
+          />
           <div style={{ position: 'relative', flex: 1, minWidth: 120 }}>
             <input type="date" value={date} onChange={e => setDate(e.target.value)}
               style={{ width: '100%', padding: '10px 14px', border: `1.5px solid ${$.bdr}`, borderRadius: 99, fontSize: 14, fontFamily: $.f, outline: 'none', boxSizing: 'border-box' }} />
@@ -151,7 +152,6 @@ const SearchPageV2 = () => {
             </div>
           ) : results.length === 0 ? (
             <div style={{ textAlign: 'center', padding: 48 }}>
-              {/* Monochrome SVG icon — NEVER emoji */}
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={$.l} strokeWidth="1.5" style={{ marginBottom: 12 }}>
                 <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
               </svg>
@@ -167,7 +167,6 @@ const SearchPageV2 = () => {
           )}
         </div>
 
-        {/* Real Leaflet map */}
         {showMap && (
           <div style={{
             width: '45%', maxWidth: 600, position: 'sticky', top: 64,

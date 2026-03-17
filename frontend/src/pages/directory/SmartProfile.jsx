@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getListing } from '../../utils/directoryApi'
 import ServiceProfilePage from './ServiceProfilePage'
+import SEO from '../../components/seo/SEO'
 import RestaurantProfilePage from './RestaurantProfilePage'
 
 const SmartProfile = () => {
@@ -55,10 +56,23 @@ const SmartProfile = () => {
     </div>
   )
 
-  const isRestaurant = profile.type === 'restaurant' || profile.category === 'restaurant' || profile.category === 'cafe'
+  const isRestaurant = profile.type === 'restaurant' || profile.category === 'Restaurants' || profile.category === 'restaurant' || profile.category === 'cafe'
   
-  // Pass profile data as prop so child doesn't re-fetch
-  return isRestaurant ? <RestaurantProfilePage /> : <ServiceProfilePage />
+  // SEO from backend seo_engine
+  const seo = profile.seo || {}
+  const schema = profile.schema_org || null
+
+  return (
+    <>
+      <SEO
+        title={seo.title || profile.name || profile.display_name}
+        description={seo.description || `${profile.name || profile.display_name} in ${profile.area || ''}. Book online on Reeve Now.`}
+        path={`/${slug}`}
+        schema={schema}
+      />
+      {isRestaurant ? <RestaurantProfilePage /> : <ServiceProfilePage />}
+    </>
+  )
 }
 
 export default SmartProfile

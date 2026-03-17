@@ -9,7 +9,7 @@ import SearchFilters from '../../components/directory/SearchFilters';
 import RestaurantCard from '../../components/directory/RestaurantCard';
 import NotifyMeModal from '../../components/directory/NotifyMeModal';
 import { CardSkeleton } from '../../components/directory/SkeletonLoader';
-import api from '../../utils/api';
+import { searchBusinesses } from "../../utils/directoryApi";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -57,7 +57,7 @@ export default function SearchPage() {
         Object.entries(params).filter(([_, v]) => v !== '')
       ).toString();
 
-      const response = await api.get(`/directory/search?${queryString}`);
+      const response = await searchBusinesses(Object.fromEntries(Object.entries(params).filter(([_, v]) => v !== "")));
       setListings(response.listings || []);
       setTotalResults(response.total || 0);
     } catch (error) {
