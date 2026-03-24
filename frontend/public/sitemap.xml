@@ -57,4 +57,8 @@
   <url><loc>https://reevenow.com/categories/aesthetics/birmingham</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://reevenow.com/categories/aesthetics/manchester</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://reevenow.com/categories/aesthetics/leeds</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://reevenow.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reevenow.com/experiences</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://reevenow.com/reviews</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://reevenow.com/discover</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 </urlset>
