@@ -12,7 +12,7 @@ export default function SEO({
   description,
   path = '',
   type = 'website',
-  image = '/images/og-default.jpg',
+  image = '/images/og-default.png',
   noindex = false,
   schema,
 }) {
@@ -33,6 +33,8 @@ export default function SEO({
       <meta property="og:description" content={pageDesc} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={`${SITE.url}${image}`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={SITE.name} />
       <meta property="og:locale" content="en_GB" />
 
